@@ -9,6 +9,7 @@ interface Product {
   img: string;
   icon: string;
   tabs: Tab[];
+  transparent?: boolean;
 }
 
 const products: Product[] = [
@@ -18,6 +19,7 @@ const products: Product[] = [
     desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
     img: giniImg,
     icon: "smart_toy",
+    transparent: true,
     tabs: [
       {
         id: "gini-outcome",
@@ -259,15 +261,24 @@ export const ProductSection: React.FC = () => {
               </div>
 
               {/* Image */}
-              <div className="flex-1 w-full">
-                <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden bg-surface-container">
+              <div className="flex-1 w-full flex items-center justify-center">
+                {product.transparent ? (
                   <img
                     src={product.img}
                     alt={product.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full max-w-md object-contain transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                </div>
+                ) : (
+                  <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden bg-surface-container">
+                    <img
+                      src={product.img}
+                      alt={product.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           );
