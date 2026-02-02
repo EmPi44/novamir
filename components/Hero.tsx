@@ -119,7 +119,7 @@ export const Hero: React.FC = () => {
     <section 
       id="welcome" 
       ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20"
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20 pb-32 md:pb-44"
       style={heroStyle}
     >
       {/* Animation Definitions for standard CSS */}

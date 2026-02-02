@@ -42,13 +42,13 @@ export const LiquidMetalCTA: React.FC<LiquidMetalCTAProps> = ({ variant = 'defau
     <div className={isHero ? "w-full flex justify-center" : "w-full flex justify-center md:justify-start"}>
       <div className={
         isHero
-          ? "relative flex items-center justify-center gap-5 md:gap-8 p-1.5 md:p-2 bg-black rounded-full shadow-[inset_0_0.1em_0_0_#444,0_0_50px_8px_rgba(255,255,255,0.12),0_0_100px_20px_rgba(255,255,255,0.06)] overflow-hidden cursor-pointer group/cta hover:scale-105 transition-transform duration-300"
+          ? "relative flex items-center justify-center gap-3 md:gap-5 p-1 md:p-1.5 bg-black rounded-full shadow-[inset_0_0.1em_0_0_#444,0_0_50px_8px_rgba(255,255,255,0.12),0_0_100px_20px_rgba(255,255,255,0.06)] overflow-hidden cursor-pointer group/cta hover:scale-105 transition-transform duration-300"
           : "relative flex items-center justify-between md:justify-end gap-8 md:gap-32 p-8 md:p-12 bg-black rounded-[2.5rem] md:rounded-full w-full max-w-5xl shadow-[inset_0_0.2em_0_0_#444] overflow-hidden"
       }>
 
         {/* Left content: text for hero, icons for default */}
         {isHero ? (
-          <span className="text-sm md:text-lg font-medium tracking-wide text-[#9a9694] z-10 pl-3 md:pl-5 whitespace-nowrap">Scroll Down</span>
+          <span className="text-xs md:text-sm font-medium tracking-wide text-[#9a9694] z-10 pl-2 md:pl-4 whitespace-nowrap">Scroll Down</span>
         ) : (
           <div className="flex gap-4 md:gap-12 items-center z-10">
             {/* Attachment Icon */}
@@ -70,14 +70,14 @@ export const LiquidMetalCTA: React.FC<LiquidMetalCTAProps> = ({ variant = 'defau
         {/* Liquid Metal Button */}
         <div className={
           isHero
-            ? "relative w-[48px] h-[48px] md:w-[72px] md:h-[72px] shrink-0"
+            ? "relative w-[36px] h-[36px] md:w-[52px] md:h-[52px] shrink-0"
             : "relative w-[250px] h-[250px] md:w-[385px] md:h-[385px] shrink-0"
         }>
           <div
             ref={mountRef}
             className={
               isHero
-                ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px] md:w-[62px] md:h-[62px] rounded-full shadow-[inset_0_0.1rem_0.1rem_0.1rem_rgba(255,255,255,0.3)] bg-gradient-to-b from-[#444] to-black"
+                ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30px] h-[30px] md:w-[44px] md:h-[44px] rounded-full shadow-[inset_0_0.1rem_0.1rem_0.1rem_rgba(255,255,255,0.3)] bg-gradient-to-b from-[#444] to-black"
                 : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] md:w-[350px] md:h-[350px] rounded-full shadow-[inset_0_0.2rem_0.2rem_0.2rem_rgba(255,255,255,0.3)] bg-gradient-to-b from-[#444] to-black"
             }
           >
@@ -85,20 +85,20 @@ export const LiquidMetalCTA: React.FC<LiquidMetalCTAProps> = ({ variant = 'defau
 
           <div className={
             isHero
-              ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[50px] h-[50px] md:w-[74px] md:h-[74px] rounded-full z-10 transition-all duration-300"
+              ? "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[38px] h-[38px] md:w-[54px] md:h-[54px] rounded-full z-10 transition-all duration-300"
               : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center w-[250px] h-[250px] md:w-[390px] md:h-[390px] rounded-full z-10 group cursor-pointer transition-all duration-300"
           }>
              {/* Gradient Border Effect */}
              <div className={
                isHero
-                 ? "absolute inset-0 p-[3px] md:p-1 rounded-full bg-[conic-gradient(from_180deg,blue,purple,red,purple,blue)] grayscale group-hover/cta:grayscale-0 transition-all duration-300 mask-linear-xor"
+                 ? "absolute inset-0 p-[2px] md:p-[3px] rounded-full bg-[conic-gradient(from_180deg,blue,purple,red,purple,blue)] grayscale group-hover/cta:grayscale-0 transition-all duration-300 mask-linear-xor"
                  : "absolute inset-0 p-2 rounded-full bg-[conic-gradient(from_180deg,blue,purple,red,purple,blue)] grayscale group-hover:grayscale-0 transition-all duration-300 mask-linear-xor"
              }></div>
 
              {/* Icon inside button */}
              <svg className={
                isHero
-                 ? "w-4 md:w-6 fill-[#65615f] rotate-[135deg] relative z-20 pointer-events-none"
+                 ? "w-3 md:w-4 fill-[#65615f] rotate-[135deg] relative z-20 pointer-events-none"
                  : "w-[60px] md:w-[100px] fill-[#65615f] -rotate-45 relative z-20 pointer-events-none"
              } viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M843.968 896a51.072 51.072 0 0 1-51.968-52.032V232H180.032A51.072 51.072 0 0 1 128 180.032c0-29.44 22.528-52.032 52.032-52.032h663.936c29.44 0 52.032 22.528 52.032 52.032v663.936c0 29.44-22.528 52.032-52.032 52.032z">
