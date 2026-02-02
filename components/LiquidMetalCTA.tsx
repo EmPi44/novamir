@@ -42,13 +42,13 @@ export const LiquidMetalCTA: React.FC<LiquidMetalCTAProps> = ({ variant = 'defau
     <div className={isHero ? "w-full flex justify-center" : "w-full flex justify-center md:justify-start"}>
       <div className={
         isHero
-          ? "relative flex items-center justify-center gap-5 md:gap-8 p-1.5 md:p-2 bg-black rounded-full shadow-[inset_0_0.1em_0_0_#444] overflow-hidden cursor-pointer group/cta hover:scale-105 transition-transform duration-300"
+          ? "relative flex items-center justify-center gap-5 md:gap-8 p-1.5 md:p-2 bg-black rounded-full shadow-[inset_0_0.1em_0_0_#444,0_0_50px_8px_rgba(255,255,255,0.12),0_0_100px_20px_rgba(255,255,255,0.06)] overflow-hidden cursor-pointer group/cta hover:scale-105 transition-transform duration-300"
           : "relative flex items-center justify-between md:justify-end gap-8 md:gap-32 p-8 md:p-12 bg-black rounded-[2.5rem] md:rounded-full w-full max-w-5xl shadow-[inset_0_0.2em_0_0_#444] overflow-hidden"
       }>
 
         {/* Left content: text for hero, icons for default */}
         {isHero ? (
-          <span className="text-xs md:text-sm font-medium tracking-wide text-[#65615f] z-10 pl-2 md:pl-4 whitespace-nowrap">Scroll Down</span>
+          <span className="text-sm md:text-lg font-medium tracking-wide text-[#9a9694] z-10 pl-3 md:pl-5 whitespace-nowrap">Scroll Down</span>
         ) : (
           <div className="flex gap-4 md:gap-12 items-center z-10">
             {/* Attachment Icon */}
