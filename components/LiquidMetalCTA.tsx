@@ -48,7 +48,7 @@ export const LiquidMetalCTA: React.FC<LiquidMetalCTAProps> = ({ variant = 'defau
 
         {/* Left content: text for hero, icons for default */}
         {isHero ? (
-          <span className="text-xs md:text-sm font-medium tracking-wide text-[#9a9694] z-10 pl-2 md:pl-4 whitespace-nowrap">Scroll Down</span>
+          <span className="text-sm md:text-base font-semibold tracking-wide text-white z-10 pl-3 md:pl-5 whitespace-nowrap">Reclaim My Time</span>
         ) : (
           <div className="flex gap-4 md:gap-12 items-center z-10">
             {/* Attachment Icon */}

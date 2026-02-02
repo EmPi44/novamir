@@ -5,12 +5,14 @@ import resapassLogo from '../assets/logos/resapass.png';
 import dronicleLogo from '../assets/logos/dronicle.png';
 import umamiCommsLogo from '../assets/logos/umami-comms.jpeg';
 import podsAndSpicesLogo from '../assets/logos/pods-and-spices.jpg';
+import missionsOfHonorLogo from '../assets/logos/missions-of-honor.png';
 
 const clients = [
   { name: 'Resapass', logo: resapassLogo },
   { name: 'Dronicle', logo: dronicleLogo },
   { name: 'Umami Comms', logo: umamiCommsLogo },
   { name: 'Pods & Spices', logo: podsAndSpicesLogo },
+  { name: 'Missions of Honor', logo: missionsOfHonorLogo },
 ];
 
 declare global {
@@ -174,8 +176,10 @@ export const Hero: React.FC = () => {
 
       {/* Client logo marquee at bottom of hero */}
       <div className="absolute bottom-8 left-0 right-0 z-10">
-        <p className="text-center text-xs font-medium tracking-widest uppercase text-surface-on-variant mb-4">
-          Trusted by
+        <p className="flex items-center justify-center gap-3 text-xs font-medium tracking-widest uppercase text-surface-on-variant mb-4">
+          <span>Trusted by</span>
+          <span className="w-px h-3.5 bg-current opacity-30"></span>
+          <span>In collaboration with Genie AI Solutions</span>
         </p>
         <div className="w-full overflow-hidden marquee-mask">
           <div className="animate-marquee flex w-max">
