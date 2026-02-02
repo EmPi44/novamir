@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Logo } from './Logo';
+import { LiquidMetalCTA } from './LiquidMetalCTA';
 import resapassLogo from '../assets/logos/resapass.png';
 import dronicleLogo from '../assets/logos/dronicle.png';
 import umamiCommsLogo from '../assets/logos/umami-comms.jpeg';
@@ -133,14 +134,8 @@ export const Hero: React.FC = () => {
           </span>
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
-          <button className="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-full text-lg font-medium hover:scale-105 transition-transform">
-            <span className="material-symbols-outlined">call</span>
-            <span>Book a Call</span>
-          </button>
-          <button className="flex items-center gap-2 px-8 py-4 rounded-full text-lg font-medium text-surface-on bg-surface-container-high border border-transparent hover:bg-surface-container-highest transition-colors">
-            Explore use cases
-          </button>
+        <div className="mt-12">
+          <LiquidMetalCTA variant="hero" />
         </div>
       </div>
 
