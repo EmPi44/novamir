@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from './Logo';
 
 const navItems = [
-  { label: 'Product', href: '#product' },
-  { label: 'Use Cases', href: '#developers' },
-  { label: 'Pricing', href: '#' },
-  { label: 'Blog', href: '#' },
-  { label: 'Resources', href: '#' },
+  { label: 'Solutions', href: '#product' },
+  { label: 'Your Journey With Us', href: '#developers' },
+  { label: 'About', href: '#' },
 ];
 
 export const Header: React.FC = () => {
