@@ -1,87 +1,72 @@
 import React from 'react';
 
-const icons = [
-  'keyboard_return', 'keyboard_tab', 'merge', 'folder', 'deployed_code', 
-  'dashboard_customize', 'commit', 'chat_add_on', 'device_hub', 'refresh', 
-  'code', 'file_copy', 'code_blocks', 'keyboard_command_key', 'upload', 
-  'terminal', 'swap_horiz', 'last_page', 'apps_outage', 'keyboard_option_key', 
-  'recenter', 'power_settings_new', 'design_services', 'widgets'
-];
-
-const features = [
+const products = [
   {
-    title: "An AI IDE Core",
-    desc: "Novamir's Editor view offers tab autocompletion, natural language code commands, and a configurable, and context-aware configurable agent.",
-    img: "https://picsum.photos/id/1/800/600"
+    title: "Gini",
+    subtitle: "AI Outbound Agent",
+    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
+    img: "https://picsum.photos/id/1/800/600",
+    icon: "smart_toy",
   },
   {
-    title: "Higher-level Abstractions",
-    desc: "A more intuitive task-based approach to monitoring agent activity, presenting you with essential artifacts and verification results to build trust.",
-    img: "https://picsum.photos/id/2/800/600"
+    title: "Henry",
+    subtitle: "AI Inbound Assistant",
+    desc: "Intelligent customer service that understands context, resolves inquiries instantly, and escalates only when it matters. Always on, always helpful.",
+    img: "https://picsum.photos/id/2/800/600",
+    icon: "support_agent",
   },
   {
-    title: "Cross-surface Agents",
-    desc: "Synchronized agentic control across your editor, terminal, and browser for powerful development workflows.",
-    img: "https://picsum.photos/id/3/800/600"
+    title: "Missions of Honor Platform",
+    subtitle: "Non-Profit Collaboration",
+    desc: "A purpose-built collaboration platform connecting veterans, volunteers, and organizations to coordinate missions and create lasting impact together.",
+    img: "https://picsum.photos/id/3/800/600",
+    icon: "diversity_3",
   },
   {
-    title: "User Feedback",
-    desc: "Intuitively integrate feedback across surfaces and artifacts to guide and refine the agent’s work.",
-    img: "https://picsum.photos/id/4/800/600"
+    title: "Gini Command Center",
+    subtitle: "Unified Operations Hub",
+    desc: "Gini meets the platform. Monitor all AI agents, track performance, and manage workflows from one central command center — full visibility, total control.",
+    img: "https://picsum.photos/id/4/800/600",
+    icon: "hub",
   },
-  {
-    title: "An Agent-First Experience",
-    desc: "Manage multiple agents at the same time, across any workspace, from one central mission control view.",
-    img: "https://picsum.photos/id/5/800/600"
-  }
 ];
 
 export const ProductSection: React.FC = () => {
   return (
     <section id="product" className="py-24 max-w-[1400px] mx-auto px-4 sm:px-8">
-      <div className="mb-24 md:w-2/3 lg:w-1/2">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight tracking-tight mb-8">
-          <span className="bg-gradient-to-r from-zinc-900 to-zinc-500 bg-clip-text text-transparent">
-            Novamir is our agentic development platform, evolving the IDE into the agent-first era.
-          </span>
-        </h2>
-      </div>
-
-      {/* Floating Icons Strip */}
-      <div className="w-full overflow-hidden mb-32 mask-linear-fade">
-        <div className="flex gap-4 animate-slide-left w-max">
-          {[...icons, ...icons].map((icon, i) => (
-            <div 
-              key={i} 
-              className="flex-shrink-0 w-16 h-16 md:w-24 md:h-24 rounded-full bg-surface-container flex items-center justify-center border border-surface-container-higher backdrop-blur-sm animate-wobble"
-              style={{ animationDelay: `${i * -0.2}s` }}
+      {/* Products — alternating image left/right */}
+      <div className="flex flex-col gap-24 lg:gap-36">
+        {products.map((product, idx) => {
+          const imageRight = idx % 2 === 0;
+          return (
+            <div
+              key={idx}
+              className={`group flex flex-col ${imageRight ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-10 lg:gap-16 items-center`}
             >
-              <span className="material-symbols-outlined text-3xl md:text-4xl text-surface-on-variant opacity-60">
-                {icon}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
+              {/* Text */}
+              <div className="flex-1 flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="material-symbols-outlined text-2xl text-surface-on-variant">{product.icon}</span>
+                  <span className="text-sm font-medium tracking-widest uppercase text-surface-on-variant">{product.subtitle}</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-medium mb-5 text-surface-on tracking-tight">{product.title}</h3>
+                <p className="text-lg text-surface-on-variant leading-relaxed font-light">{product.desc}</p>
+              </div>
 
-      {/* Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 relative">
-        {features.map((feature, idx) => (
-          <div key={idx} className="group flex flex-col gap-6 sticky-card" style={{ top: `${(idx + 1) * 20}px` }}>
-            <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden bg-surface-container">
-              <img 
-                src={feature.img} 
-                alt={feature.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
+              {/* Image */}
+              <div className="flex-1 w-full">
+                <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden bg-surface-container">
+                  <img
+                    src={product.img}
+                    alt={product.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="max-w-md">
-              <h3 className="text-2xl font-normal mb-3 text-surface-on">{feature.title}</h3>
-              <p className="text-lg text-surface-on-variant leading-relaxed font-light">{feature.desc}</p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
