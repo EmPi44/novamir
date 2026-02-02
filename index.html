@@ -55,6 +55,8 @@
             animation: {
               'fade-in': 'fadeIn 0.5s ease-out forwards',
               'wobble': 'wobble 4s ease infinite alternate',
+              'slide-in-left': 'slideInLeft 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+              'slide-in-right': 'slideInRight 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
             },
             keyframes: {
               fadeIn: {
@@ -64,6 +66,14 @@
               wobble: {
                 '0%': { transform: 'translateY(25%)' },
                 '100%': { transform: 'translateY(-25%)' },
+              },
+              slideInLeft: {
+                '0%': { opacity: '0', transform: 'translateX(-60px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+              },
+              slideInRight: {
+                '0%': { opacity: '0', transform: 'translateX(60px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
               }
             }
           }
