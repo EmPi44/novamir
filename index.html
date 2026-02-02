@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novamir - Experience Liftoff</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+      /* Custom properties registration for Houdini/Modern CSS features that Tailwind doesn't fully abstract yet */
+      @property --ring-x { syntax: '<number>'; inherits: false; initial-value: 50; }
+      @property --ring-y { syntax: '<number>'; inherits: false; initial-value: 50; }
+      @property --ring-interactive { syntax: '<number>'; inherits: false; initial-value: 0; }
+      @property --animation-tick { syntax: '<number>'; inherits: false; initial-value: 0; }
+      @property --ring-radius { syntax: '<number> | auto'; inherits: false; initial-value: auto; }
+      
+      /* Smooth scrolling for anchor links */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      /* Hide scrollbar for carousel but allow functionality */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              surface: {
+                DEFAULT: '#FFFFFF',
+                on: '#121317',
+                'on-variant': '#45474D',
+                container: '#F8F9FC',
+              },
+              primary: {
+                DEFAULT: '#121317',
+                on: '#FFFFFF',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'wobble': 'wobble 4s ease infinite alternate',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              wobble: {
+                '0%': { transform: 'translateY(25%)' },
+                '100%': { transform: 'translateY(-25%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@paper-design/shaders": "https://esm.sh/@paper-design/shaders"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-surface text-surface-on antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
