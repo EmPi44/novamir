@@ -125,10 +125,11 @@ export const Hero: React.FC = () => {
             <Logo className="h-12 w-auto md:h-16 text-primary" />
         </h1>
         
-        <p className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-surface-on leading-[0.9]">
-          Experience liftoff
-          <span className="block text-2xl md:text-3xl mt-4 font-normal text-surface-on-variant">
-            with the next-generation IDE
+        <p className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight text-surface-on leading-[1.05]">
+          We eliminate manual work
+          <br />with scalable AI systems.
+          <span className="block text-xl md:text-2xl mt-6 font-normal text-surface-on-variant">
+            10,000+ hours reclaimed for revenue, customers, and core decisions.
           </span>
         </p>
 
