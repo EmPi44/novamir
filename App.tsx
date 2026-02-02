@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { SolutionSection } from './components/VideoSection';
+
 import { ProductSection } from './components/ProductSection';
 import { DevelopersSection } from './components/DevelopersSection';
 import { CallToAction } from './components/CallToAction';
@@ -12,7 +12,6 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <SolutionSection />
         <ProductSection />
         <DevelopersSection />
         <CallToAction />

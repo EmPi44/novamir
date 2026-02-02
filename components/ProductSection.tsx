@@ -1,12 +1,70 @@
 import React from 'react';
+import { AnimatedTabs, type Tab } from '@/components/ui/animated-tabs';
+import giniImg from '../assets/gini.png';
 
-const products = [
+interface Product {
+  title: string;
+  subtitle: string;
+  desc: string;
+  img: string;
+  icon: string;
+  tabs: Tab[];
+}
+
+const products: Product[] = [
   {
     title: "Gini",
     subtitle: "AI Outbound Agent",
     desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
-    img: "https://picsum.photos/id/1/800/600",
+    img: giniImg,
     icon: "smart_toy",
+    tabs: [
+      {
+        id: "gini-outcome",
+        label: "Business Outcome",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">trending_up</span>
+              <span className="text-sm font-semibold text-surface-on">3x more qualified leads</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              Companies using Gini see a 3x increase in qualified pipeline within the first 90 days, with 60% reduction in cost per lead.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "gini-feature",
+        label: "Feature",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">auto_awesome</span>
+              <span className="text-sm font-semibold text-surface-on">Multi-channel sequencing</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              Automated email, LinkedIn, and SMS outreach with AI-crafted personalization. Smart scheduling adapts to each prospect's timezone and engagement patterns.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "gini-case",
+        label: "Case Study",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
+              <span className="text-sm font-semibold text-surface-on">SaaS Series A — 147% pipeline growth</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              A B2B SaaS startup deployed Gini to replace manual SDR outreach. Within 60 days they booked 3x more demos while cutting outbound costs by half.
+            </p>
+          </div>
+        ),
+      },
+    ],
   },
   {
     title: "Henry",
@@ -14,6 +72,53 @@ const products = [
     desc: "Intelligent customer service that understands context, resolves inquiries instantly, and escalates only when it matters. Always on, always helpful.",
     img: "https://picsum.photos/id/2/800/600",
     icon: "support_agent",
+    tabs: [
+      {
+        id: "henry-outcome",
+        label: "Business Outcome",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">schedule</span>
+              <span className="text-sm font-semibold text-surface-on">85% faster resolution times</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              Henry resolves most inquiries instantly, reducing average handle time from 12 minutes to under 2 — while lifting customer satisfaction scores by 40%.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "henry-feature",
+        label: "Feature",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">psychology</span>
+              <span className="text-sm font-semibold text-surface-on">Context-aware conversations</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              Henry remembers past interactions, reads order history, and understands nuanced questions. Intelligent escalation routes complex issues to the right human agent with full context.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "henry-case",
+        label: "Case Study",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
+              <span className="text-sm font-semibold text-surface-on">E-commerce brand — 70% ticket deflection</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              A DTC brand with 50K+ monthly support tickets deployed Henry and deflected 70% of volume within the first month, saving $120K annually in support costs.
+            </p>
+          </div>
+        ),
+      },
+    ],
   },
   {
     title: "Missions of Honor Platform",
@@ -21,13 +126,107 @@ const products = [
     desc: "A purpose-built collaboration platform connecting veterans, volunteers, and organizations to coordinate missions and create lasting impact together.",
     img: "https://picsum.photos/id/3/800/600",
     icon: "diversity_3",
+    tabs: [
+      {
+        id: "moh-outcome",
+        label: "Business Outcome",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">groups</span>
+              <span className="text-sm font-semibold text-surface-on">5x volunteer engagement</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              Organizations using the platform see 5x higher volunteer retention and a 200% increase in coordinated mission completions year over year.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "moh-feature",
+        label: "Feature",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">hub</span>
+              <span className="text-sm font-semibold text-surface-on">Mission coordination hub</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              Centralized dashboards for mission planning, volunteer matching, resource allocation, and real-time progress tracking — all in one secure workspace.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "moh-case",
+        label: "Case Study",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
+              <span className="text-sm font-semibold text-surface-on">Veterans org — 12 states connected</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              A national veterans organization unified chapters across 12 states on the platform, coordinating 300+ missions in a single year with 95% completion rate.
+            </p>
+          </div>
+        ),
+      },
+    ],
   },
   {
     title: "Gini Command Center",
     subtitle: "Unified Operations Hub",
-    desc: "Gini meets the platform. Monitor all AI agents, track performance, and manage workflows from one central command center — full visibility, total control.",
-    img: "https://picsum.photos/id/4/800/600",
+    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
+    img: "https://picsum.photos/id/1/800/600",
     icon: "hub",
+    tabs: [
+      {
+        id: "gcc-outcome",
+        label: "Business Outcome",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">visibility</span>
+              <span className="text-sm font-semibold text-surface-on">Complete operational visibility</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              Teams running multiple agents report 50% fewer operational blind spots and 30% faster issue resolution through centralized monitoring and alerts.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "gcc-feature",
+        label: "Feature",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">dashboard</span>
+              <span className="text-sm font-semibold text-surface-on">Real-time agent dashboards</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              Live performance metrics, conversation analytics, and workflow status for every deployed agent. Set custom alerts and automate escalation rules from a single pane.
+            </p>
+          </div>
+        ),
+      },
+      {
+        id: "gcc-case",
+        label: "Case Study",
+        content: (
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
+              <span className="text-sm font-semibold text-surface-on">Enterprise — 8 agents, 1 dashboard</span>
+            </div>
+            <p className="text-sm text-surface-on-variant leading-relaxed">
+              A mid-market company managing 8 AI agents across sales, support, and ops consolidated everything into the Command Center — reducing management overhead by 60%.
+            </p>
+          </div>
+        ),
+      },
+    ],
   },
 ];
 
@@ -50,7 +249,13 @@ export const ProductSection: React.FC = () => {
                   <span className="text-sm font-medium tracking-widest uppercase text-surface-on-variant">{product.subtitle}</span>
                 </div>
                 <h3 className="text-3xl md:text-4xl font-medium mb-5 text-surface-on tracking-tight">{product.title}</h3>
-                <p className="text-lg text-surface-on-variant leading-relaxed font-light">{product.desc}</p>
+                <p className="text-lg text-surface-on-variant leading-relaxed font-light mb-6">{product.desc}</p>
+
+                <AnimatedTabs
+                  tabs={product.tabs}
+                  defaultTab={product.tabs[0].id}
+                  className="max-w-full"
+                />
               </div>
 
               {/* Image */}
