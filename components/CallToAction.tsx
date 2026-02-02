@@ -11,7 +11,7 @@ export const CallToAction: React.FC = () => {
             <span className="text-surface-on-variant text-2xl md:text-3xl block mt-2">Achieve new heights</span>
           </h3>
           <button className="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-zinc-800 transition-all">
-            Download
+            Book a Call
           </button>
         </div>
         

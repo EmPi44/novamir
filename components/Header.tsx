@@ -46,8 +46,8 @@ export const Header: React.FC = () => {
 
         <div className="hidden lg:flex items-center gap-4">
           <button className="flex items-center gap-2 bg-primary text-primary-on px-6 py-2.5 rounded-full text-sm font-medium hover:bg-zinc-800 transition-colors">
-            <span>Download</span>
-            <span className="material-symbols-outlined text-lg">download</span>
+            <span>Book a Call</span>
+            <span className="material-symbols-outlined text-lg">call</span>
           </button>
         </div>
 
