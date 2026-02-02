@@ -263,12 +263,18 @@ export const ProductSection: React.FC = () => {
               {/* Image */}
               <div className="flex-1 w-full flex items-center justify-center">
                 {product.transparent ? (
-                  <img
-                    src={product.img}
-                    alt={product.title}
-                    className="w-full max-w-md object-contain transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  <div className="relative flex items-center justify-center">
+                    {/* Green glow behind image */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className="w-[110%] h-[110%] rounded-full bg-emerald-500/60 blur-[150px] transition-all duration-700 group-hover:bg-emerald-400/70 group-hover:blur-[180px]" />
+                    </div>
+                    <img
+                      src={product.img}
+                      alt={product.title}
+                      className="relative z-10 w-full max-w-md object-contain transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
                 ) : (
                   <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden bg-surface-container">
                     <img
