@@ -24,6 +24,34 @@ declare global {
 export const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [houdiniReady, setHoudiniReady] = useState(false);
+  const [count, setCount] = useState(0);
+
+  // Count-up animation for the hours number
+  useEffect(() => {
+    let startTime: number | null = null;
+    let rafId: number;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / 2200, 1);
+      // Ease-out cubic — fast start, satisfying slowdown at the end
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * 10000));
+      if (progress < 1) {
+        rafId = requestAnimationFrame(animate);
+      }
+    };
+
+    const timeout = setTimeout(() => {
+      rafId = requestAnimationFrame(animate);
+    }, 400);
+
+    return () => {
+      clearTimeout(timeout);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   useEffect(() => {
     // Initialize Houdini Paint Worklet
@@ -120,17 +148,22 @@ export const Hero: React.FC = () => {
         }
       `}</style>
 
-      <div className="z-10 text-center px-4 max-w-4xl mx-auto space-y-8 animate-fade-in">
+      <div className="z-10 text-center px-4 max-w-5xl mx-auto space-y-8 animate-fade-in">
         <h1 className="flex justify-center mb-8">
             <span className="sr-only">Novamir</span>
             <Logo className="h-12 w-auto md:h-16 text-primary" />
         </h1>
         
-        <p className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight text-surface-on leading-[1.05]">
-          We eliminate manual work
-          <br />with scalable AI systems.
+        <p className="text-3xl md:text-5xl lg:text-5xl font-medium tracking-tight text-surface-on leading-[1.2]">
+          We eliminated{' '}
+          <span className="inline-block bg-black text-white px-3 py-0.5 md:px-5 md:py-1 rounded-xl tabular-nums font-bold shadow-[0_0_40px_8px_rgba(255,255,255,0.08)]">
+            {count.toLocaleString()}+ h
+          </span>
+          {' '}of manual work
+          <br />
+          <span className="text-surface-on-variant">with scalable AI systems.</span>
           <span className="block text-xl md:text-2xl mt-6 font-normal text-surface-on-variant">
-            10,000+ hours reclaimed for revenue, customers, and core decisions.
+            Your hours reclaimed for revenue, customers, and core decisions.
           </span>
         </p>
 
