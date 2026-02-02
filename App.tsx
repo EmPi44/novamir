@@ -5,7 +5,6 @@ import { VideoSection } from './components/VideoSection';
 import { ProductSection } from './components/ProductSection';
 import { DevelopersSection } from './components/DevelopersSection';
 import { CallToAction } from './components/CallToAction';
-import { ClientLogos } from './components/ClientLogos';
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
         <ProductSection />
         <DevelopersSection />
         <CallToAction />
-        <ClientLogos />
       </main>
       
       <footer className="py-12 text-center text-surface-on-variant text-sm">
