@@ -1,4 +1,5 @@
 import React from 'react';
+import giniImg from '../assets/gini.png';
 
 export const SolutionSection: React.FC = () => {
   return (
@@ -10,17 +11,17 @@ export const SolutionSection: React.FC = () => {
         <div className="flex flex-col gap-6">
           <h2 className="text-4xl md:text-5xl font-light leading-tight tracking-tight">
             <span className="bg-gradient-to-r from-zinc-900 to-zinc-500 bg-clip-text text-transparent">
-              Novamir Platform
+              Gini
             </span>
           </h2>
           <p className="text-lg md:text-xl text-surface-on-variant leading-relaxed font-light max-w-lg">
-            An agentic development environment that evolves the IDE into the agent-first era — with tab autocompletion, natural language commands, and synchronized control across your editor, terminal, and browser.
+            Your AI-powered WhatsApp sales agent that turns conversations into conversions — qualifying leads, nurturing prospects, and closing deals around the clock.
           </p>
           <ul className="flex flex-col gap-4 mt-2">
             {[
-              'Context-aware AI agent built into the editor',
-              'Cross-surface orchestration of development workflows',
-              'Task-based monitoring with verification and trust-building',
+              'Automated lead qualification via WhatsApp',
+              '24/7 intelligent sales conversations',
+              'Seamless handoff to your human team when needed',
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-surface-on-variant font-light">
                 <span className="material-symbols-outlined text-xl mt-0.5 opacity-60">check_circle</span>
@@ -31,11 +32,11 @@ export const SolutionSection: React.FC = () => {
         </div>
 
         {/* Right — Image */}
-        <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden bg-surface-container shadow-2xl">
+        <div className="flex items-center justify-center">
           <img
-            src="https://picsum.photos/id/60/800/600"
-            alt="Novamir Platform"
-            className="w-full h-full object-cover"
+            src={giniImg}
+            alt="Gini — AI WhatsApp Sales Agent"
+            className="w-full max-w-md drop-shadow-2xl"
             loading="lazy"
           />
         </div>
