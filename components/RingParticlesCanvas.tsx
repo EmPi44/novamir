@@ -53,10 +53,10 @@ export const RingParticlesCanvas = forwardRef<RingParticlesCanvasHandle, RingPar
       ringThickness = 600,
       particleCount = 80,
       particleRows = 25,
-      particleSize = 2,
+      particleSize = 1.4,
       particleColor = '#121317',
-      particleMinAlpha = 0.1,
-      particleMaxAlpha = 1.0,
+      particleMinAlpha = 0.08,
+      particleMaxAlpha = 0.8,
       seed = 200,
       className,
     },
@@ -146,22 +146,22 @@ export const RingParticlesCanvas = forwardRef<RingParticlesCanvasHandle, RingPar
 
         const elapsed = timestamp - startTime;
 
-        // Lerp pointer position (exponential smoothing, ~3s feel)
-        const lerpFactor = 1 - Math.exp(-dt * 1.2);
+        // Lerp pointer position (exponential smoothing, ~1.2s CSS transition feel)
+        const lerpFactor = 1 - Math.exp(-dt * 3);
         pointerCurrent.current.x +=
           (pointerTarget.current.x - pointerCurrent.current.x) * lerpFactor;
         pointerCurrent.current.y +=
           (pointerTarget.current.y - pointerCurrent.current.y) * lerpFactor;
 
-        // Animation tick: 0→1 over 6s, repeating (drives particle rotation)
-        const animationTick = reducedMotion ? 0 : (elapsed % 6000) / 6000;
+        // Animation tick: 0→1 over 20s, repeating (drives particle rotation)
+        const animationTick = reducedMotion ? 0 : (elapsed % 20000) / 20000;
 
-        // Ring radius: oscillate between 150 and 250 over 12s (6s each direction)
+        // Ring radius: oscillate between 150 and 250 over 40s (20s each direction)
         let currentRadius: number;
         if (reducedMotion) {
           currentRadius = ringRadius;
         } else {
-          const radiusCycle = (elapsed % 12000) / 12000;
+          const radiusCycle = (elapsed % 40000) / 40000;
           const radiusT =
             radiusCycle < 0.5
               ? easeInOut(radiusCycle * 2)

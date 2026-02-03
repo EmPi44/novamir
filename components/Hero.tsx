@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Logo } from './Logo';
 import { LiquidMetalCTA } from './LiquidMetalCTA';
+import { RingParticlesCanvas, RingParticlesCanvasHandle } from './RingParticlesCanvas';
 import resapassLogo from '../assets/logos/resapass.png';
 import dronicleLogo from '../assets/logos/dronicle.png';
 import umamiCommsLogo from '../assets/logos/umami-comms.jpeg';
@@ -15,17 +16,9 @@ const clients = [
   { name: 'Missions of Honor', logo: missionsOfHonorLogo },
 ];
 
-declare global {
-  namespace CSS {
-    namespace paintWorklet {
-      function addModule(url: string): void;
-    }
-  }
-}
-
 export const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const [houdiniReady, setHoudiniReady] = useState(false);
+  const canvasRef = useRef<RingParticlesCanvasHandle>(null);
   const [count, setCount] = useState(0);
 
   // Count-up animation for the hours number
@@ -55,44 +48,22 @@ export const Hero: React.FC = () => {
     };
   }, []);
 
+  // Pointer tracking for the particle ring
   useEffect(() => {
-    // Initialize Houdini Paint Worklet
-    if ('paintWorklet' in CSS) {
-      try {
-        CSS.paintWorklet.addModule('https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js');
-        setHoudiniReady(true);
-      } catch (e) {
-        console.warn('Houdini worklet failed to load', e);
-      }
-    }
-
     const el = heroRef.current;
     if (!el) return;
 
-    let isInteractive = false;
-
     const handlePointerMove = (e: PointerEvent) => {
-      if (!isInteractive) {
-        el.classList.add('interactive');
-        isInteractive = true;
-      }
       const rawX = e.clientX / window.innerWidth;
       const rawY = e.clientY / window.innerHeight;
-      // Clamp movement to ±15% around center so the pattern stays focused
-      const x = 50 + (rawX - 0.5) * 30;
-      const y = 50 + (rawY - 0.5) * 30;
-
-      el.style.setProperty('--ring-x', x.toString());
-      el.style.setProperty('--ring-y', y.toString());
-      el.style.setProperty('--ring-interactive', '1');
+      // Clamp movement to ±6% around center so the pattern stays focused
+      const x = 50 + (rawX - 0.5) * 12;
+      const y = 50 + (rawY - 0.5) * 12;
+      canvasRef.current?.setPointerPosition(x, y);
     };
 
     const handlePointerLeave = () => {
-      el.classList.remove('interactive');
-      isInteractive = false;
-      el.style.setProperty('--ring-x', '50');
-      el.style.setProperty('--ring-y', '50');
-      el.style.setProperty('--ring-interactive', '0');
+      canvasRef.current?.resetPointerPosition();
     };
 
     el.addEventListener('pointermove', handlePointerMove);
@@ -104,37 +75,14 @@ export const Hero: React.FC = () => {
     };
   }, []);
 
-  // Inline styles for the specific Houdini custom properties and fallback
-  const heroStyle: React.CSSProperties = {
-    // Custom properties for the Houdini worklet
-    // @ts-ignore
-    '--ring-radius': '100',
-    '--ring-thickness': '600',
-    '--particle-count': '80',
-    '--particle-rows': '25',
-    '--particle-size': '1.4',
-    '--particle-color': '#121317', // Navy-ish/Black
-    '--particle-min-alpha': '0.08',
-    '--particle-max-alpha': '0.8',
-    '--seed': '200',
-    backgroundImage: houdiniReady ? 'paint(ring-particles)' : 'none',
-  };
-
   return (
-    <section 
-      id="welcome" 
+    <section
+      id="welcome"
       ref={heroRef}
       className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-20 pb-32 md:pb-44"
-      style={heroStyle}
     >
-      {/* Animation Definitions for standard CSS */}
+      {/* Marquee animation styles */}
       <style>{`
-        @keyframes ripple { 0% { --animation-tick: 0; } 100% { --animation-tick: 1; } }
-        @keyframes ring { 0% { --ring-radius: 150; } 100% { --ring-radius: 250; } }
-        #welcome {
-          animation: ripple 20s linear infinite, ring 20s ease-in-out infinite alternate;
-          transition: --ring-x 1.2s ease, --ring-y 1.2s ease;
-        }
         @keyframes marquee-scroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(-25%); }
@@ -153,6 +101,21 @@ export const Hero: React.FC = () => {
         }
       `}</style>
 
+      {/* Canvas-based particle ring background (cross-browser) */}
+      <RingParticlesCanvas
+        ref={canvasRef}
+        ringRadius={100}
+        ringThickness={600}
+        particleCount={80}
+        particleRows={25}
+        particleSize={1.4}
+        particleColor="#121317"
+        particleMinAlpha={0.08}
+        particleMaxAlpha={0.8}
+        seed={200}
+        className="absolute inset-0 w-full h-full"
+      />
+
       {/* White glow behind text for readability */}
       <div className="absolute inset-0 z-[5] pointer-events-none" style={{
         background: 'radial-gradient(ellipse 70% 50% at 50% 45%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 40%, transparent 70%)',
@@ -163,7 +126,7 @@ export const Hero: React.FC = () => {
             <span className="sr-only">Novamir</span>
             <Logo className="h-12 w-auto md:h-16 text-primary" />
         </h1>
-        
+
         <p className="text-3xl md:text-5xl lg:text-5xl font-medium tracking-tight text-surface-on leading-[1.2]">
           We eliminated{' '}
           <span className="inline-block bg-black text-white px-3 py-0.5 md:px-5 md:py-1 rounded-xl tabular-nums font-bold shadow-[0_0_40px_8px_rgba(255,255,255,0.08)]">
