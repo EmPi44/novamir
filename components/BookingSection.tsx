@@ -46,6 +46,16 @@ export const BookingSection: React.FC = () => {
             }}
           />
         </div>
+        <noscript>
+          <div className="text-center p-8">
+            <p className="text-lg text-surface-on-variant">
+              Book your free 20-minute consultation at{' '}
+              <a href="https://cal.com/emir-piric/20min" target="_blank" rel="noopener noreferrer" className="underline text-surface-on">
+                cal.com/emir-piric/20min
+              </a>
+            </p>
+          </div>
+        </noscript>
       </div>
     </section>
   );

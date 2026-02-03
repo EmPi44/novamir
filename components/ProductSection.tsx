@@ -4,6 +4,7 @@ import { AnimatedTabs, type Tab } from '@/components/ui/animated-tabs';
 import giniImg from '../assets/gini.png';
 import henryImg from '../assets/henry.png';
 import mohImg from '../assets/moh.png';
+import gccImg from '../assets/gcc.png';
 
 interface Product {
   title: string;
@@ -191,8 +192,11 @@ const products: Product[] = [
     title: "Gini Command Center",
     subtitle: "Unified Operations Hub",
     desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
-    img: "https://picsum.photos/id/1/800/600",
+    img: gccImg,
     icon: "hub",
+    transparent: true,
+    glowColor: "bg-amber-500/50",
+    imgMaxWidth: "max-w-2xl",
     tabs: [
       {
         id: "gcc-outcome",

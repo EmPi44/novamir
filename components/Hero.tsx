@@ -175,7 +175,7 @@ export const Hero: React.FC = () => {
                         filter: 'grayscale(100%)',
                         opacity: 0.8,
                       }}
-                      loading="lazy"
+                      loading="eager"
                     />
                   </div>
                 ))}

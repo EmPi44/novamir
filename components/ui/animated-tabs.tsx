@@ -106,6 +106,8 @@ const AnimatedTabs = ({
         {tabs.map((tab) => (
           <button
             key={tab.id}
+            role="tab"
+            aria-selected={activeTab === tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={cn(
               "relative px-3 py-1.5 text-sm font-medium rounded-lg text-surface-on-variant outline-none transition-colors"
@@ -124,11 +126,15 @@ const AnimatedTabs = ({
       </div>
 
       <div className="p-4 bg-surface-container text-surface-on rounded-xl border border-gray-100 min-h-[120px] h-full">
-        {tabs.map(
-          (tab) =>
-            activeTab === tab.id && (
+        {tabs.map((tab) => (
+          <div
+            key={tab.id}
+            role="tabpanel"
+            aria-hidden={activeTab !== tab.id}
+            style={{ display: activeTab === tab.id ? 'block' : 'none' }}
+          >
+            {activeTab === tab.id ? (
               <motion.div
-                key={tab.id}
                 initial={{
                   opacity: 0,
                   scale: 0.95,
@@ -150,8 +156,11 @@ const AnimatedTabs = ({
               >
                 {tab.content}
               </motion.div>
-            )
-        )}
+            ) : (
+              tab.content
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

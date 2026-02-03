@@ -1,0 +1,21 @@
+{
+  "name": "Novamir - AI Systems That Reclaim Your Time",
+  "short_name": "Novamir",
+  "description": "Scalable AI systems that eliminate thousands of hours of manual work.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#121317",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ]
+}
