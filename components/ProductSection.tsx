@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { AnimatedTabs, type Tab } from '@/components/ui/animated-tabs';
 import giniImg from '../assets/gini.png';
 
@@ -232,6 +233,57 @@ const products: Product[] = [
   },
 ];
 
+const tiltSpring = { damping: 30, stiffness: 80, mass: 0.8 };
+const glowSpring = { damping: 40, stiffness: 60, mass: 1 };
+
+function TiltImage({ src, alt }: { src: string; alt: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+
+  const rotateX = useSpring(useTransform(mouseY, [0, 1], [6, -6]), tiltSpring);
+  const rotateY = useSpring(useTransform(mouseX, [0, 1], [-6, 6]), tiltSpring);
+  const scale = useSpring(1, tiltSpring);
+  const glowX = useSpring(useTransform(mouseX, [0, 1], [-20, 20]), glowSpring);
+  const glowY = useSpring(useTransform(mouseY, [0, 1], [-20, 20]), glowSpring);
+
+  function handleMouse(e: React.MouseEvent) {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    mouseX.set((e.clientX - rect.left) / rect.width);
+    mouseY.set((e.clientY - rect.top) / rect.height);
+    scale.set(1.03);
+  }
+
+  function handleLeave() {
+    mouseX.set(0.5);
+    mouseY.set(0.5);
+    scale.set(1);
+  }
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouse}
+      onMouseLeave={handleLeave}
+      style={{ rotateX, rotateY, scale, perspective: 1000 }}
+      className="relative flex items-center justify-center [transform-style:preserve-3d] will-change-transform"
+    >
+      {/* Green glow that follows mouse */}
+      <motion.div
+        className="absolute w-[110%] h-[110%] rounded-full bg-emerald-500/60 blur-[150px] pointer-events-none"
+        style={{ x: glowX, y: glowY }}
+      />
+      <img
+        src={src}
+        alt={alt}
+        className="relative z-10 w-full max-w-md object-contain"
+        loading="lazy"
+      />
+    </motion.div>
+  );
+}
+
 export const ProductSection: React.FC = () => {
   return (
     <section id="product" className="py-24 max-w-[1400px] mx-auto px-4 sm:px-8">
@@ -263,18 +315,7 @@ export const ProductSection: React.FC = () => {
               {/* Image */}
               <div className="flex-1 w-full flex items-center justify-center">
                 {product.transparent ? (
-                  <div className="relative flex items-center justify-center">
-                    {/* Green glow behind image */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="w-[110%] h-[110%] rounded-full bg-emerald-500/60 blur-[150px] transition-all duration-700 group-hover:bg-emerald-400/70 group-hover:blur-[180px]" />
-                    </div>
-                    <img
-                      src={product.img}
-                      alt={product.title}
-                      className="relative z-10 w-full max-w-md object-contain transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
+                  <TiltImage src={product.img} alt={product.title} />
                 ) : (
                   <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden bg-surface-container">
                     <img
