@@ -112,10 +112,10 @@ export const Hero: React.FC = () => {
     '--ring-thickness': '600',
     '--particle-count': '80',
     '--particle-rows': '25',
-    '--particle-size': '2',
+    '--particle-size': '1.4',
     '--particle-color': '#121317', // Navy-ish/Black
-    '--particle-min-alpha': '0.1',
-    '--particle-max-alpha': '1.0',
+    '--particle-min-alpha': '0.08',
+    '--particle-max-alpha': '0.8',
     '--seed': '200',
     backgroundImage: houdiniReady ? 'paint(ring-particles)' : 'none',
   };
@@ -152,6 +152,11 @@ export const Hero: React.FC = () => {
           }
         }
       `}</style>
+
+      {/* White glow behind text for readability */}
+      <div className="absolute inset-0 z-[5] pointer-events-none" style={{
+        background: 'radial-gradient(ellipse 70% 50% at 50% 45%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 40%, transparent 70%)',
+      }} />
 
       <div className="z-10 text-center px-4 max-w-5xl mx-auto space-y-8 animate-fade-in">
         <h1 className="flex justify-center mb-8">
