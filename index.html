@@ -15,13 +15,11 @@
     <meta property="og:description" content="Novamir builds scalable AI systems that eliminate thousands of hours of manual work. Reclaim your time for revenue, customers, and core decisions." />
     <meta property="og:url" content="https://novamir.com/" />
     <meta property="og:site_name" content="Novamir" />
-    <meta property="og:image" content="https://novamir.com/og-image.png" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Novamir - AI Systems That Reclaim Your Time" />
     <meta name="twitter:description" content="Novamir builds scalable AI systems that eliminate thousands of hours of manual work." />
-    <meta name="twitter:image" content="https://novamir.com/og-image.png" />
 
     <!-- Preconnect for external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,8 +27,8 @@
     <link rel="preconnect" href="https://cdn.tailwindcss.com" />
 
     <script src="https://cdn.tailwindcss.com" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" media="print" onload="this.media='all'" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.rel='stylesheet'" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" as="style" onload="this.rel='stylesheet'" />
     <noscript>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -169,7 +167,7 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -179,10 +177,32 @@
       "name": "Novamir",
       "url": "https://novamir.com",
       "description": "Novamir builds scalable AI systems that eliminate thousands of hours of manual work.",
+      "email": "hello@novamir.ai",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Meydan Road, Nad Al Sheba",
+        "addressLocality": "Dubai",
+        "addressCountry": "AE"
+      },
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "sales",
-        "url": "https://novamir.com/#booking"
+        "url": "https://novamir.com/#booking",
+        "email": "hello@novamir.ai"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Novamir - AI Systems That Reclaim Your Time",
+      "url": "https://novamir.com/",
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-07-20",
+      "about": {
+        "@type": "Organization",
+        "name": "Novamir"
       }
     }
     </script>

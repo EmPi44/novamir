@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/tooltip"
 import { Facebook, Instagram, Linkedin, Send, Twitter } from "lucide-react"
 
-function Footerdemo() {
+function Footerdemo({ onOpenCookieSettings }: { onOpenCookieSettings?: () => void }) {
 
   return (
     <footer className="relative border-t bg-background text-foreground transition-colors duration-300">
@@ -135,6 +135,15 @@ function Footerdemo() {
             <a href="/terms-conditions" className="transition-colors hover:text-primary">
               Terms & Conditions
             </a>
+            {onOpenCookieSettings && (
+              <button
+                type="button"
+                onClick={onOpenCookieSettings}
+                className="transition-colors hover:text-primary"
+              >
+                Cookie Settings
+              </button>
+            )}
           </nav>
         </div>
       </div>

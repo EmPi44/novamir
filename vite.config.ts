@@ -6,10 +6,26 @@ function htmlRewrite(): Plugin {
   return {
     name: 'html-rewrite',
     configureServer(server) {
-      server.middlewares.use((req, _res, next) => {
-        const cleanPages = ['/privacy', '/privacy-policy', '/terms-conditions'];
-        if (req.url && cleanPages.includes(req.url.split('?')[0])) {
-          req.url = req.url.split('?')[0] + '.html' + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '');
+      server.middlewares.use((req, res, next) => {
+        const url = req.url?.split('?')[0] ?? '';
+
+        // Redirect /privacy to /privacy-policy (301)
+        if (url === '/privacy') {
+          res.writeHead(301, { Location: '/privacy-policy' });
+          res.end();
+          return;
+        }
+
+        // Return 404 for non-existent sitemap probes
+        if (url.endsWith('.xml') && url !== '/sitemap.xml') {
+          res.writeHead(404, { 'Content-Type': 'text/plain' });
+          res.end('Not Found');
+          return;
+        }
+
+        const cleanPages = ['/privacy-policy', '/terms-conditions'];
+        if (cleanPages.includes(url)) {
+          req.url = url + '.html' + (req.url!.includes('?') ? '?' + req.url!.split('?')[1] : '');
         }
         next();
       });

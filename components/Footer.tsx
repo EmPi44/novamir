@@ -1,9 +1,9 @@
 import { Footerdemo } from "@/components/ui/footer-section";
 
-function Footer() {
+function Footer({ onOpenCookieSettings }: { onOpenCookieSettings?: () => void }) {
   return (
     <div className="dark">
-      <Footerdemo />
+      <Footerdemo onOpenCookieSettings={onOpenCookieSettings} />
     </div>
   );
 }
