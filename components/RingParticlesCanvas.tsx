@@ -44,6 +44,9 @@ interface Particle {
   angle: number;
   radialFraction: number;
   alpha: number;
+  driftSpeed: number;   // individual horizontal drift speed
+  driftAmplitude: number; // how far this particle drifts horizontally
+  driftPhase: number;   // offset so particles don't all move in sync
 }
 
 export const RingParticlesCanvas = forwardRef<RingParticlesCanvasHandle, RingParticlesCanvasProps>(
@@ -104,7 +107,14 @@ export const RingParticlesCanvas = forwardRef<RingParticlesCanvasHandle, RingPar
           const alpha =
             particleMinAlpha +
             (particleMaxAlpha - particleMinAlpha) * (1 - distFromCenter * distFromCenter);
-          particles.push({ angle, radialFraction: rowFraction, alpha });
+          particles.push({
+            angle,
+            radialFraction: rowFraction,
+            alpha,
+            driftSpeed: 0.3 + rng() * 0.7,       // 0.3–1.0 relative speed
+            driftAmplitude: 40 + rng() * 120,      // 40–160px horizontal range
+            driftPhase: rng() * Math.PI * 2,       // random start phase
+          });
         }
       }
 
@@ -153,15 +163,18 @@ export const RingParticlesCanvas = forwardRef<RingParticlesCanvasHandle, RingPar
         pointerCurrent.current.y +=
           (pointerTarget.current.y - pointerCurrent.current.y) * lerpFactor;
 
-        // Animation tick: 0→1 over 20s, repeating (drives particle rotation)
-        const animationTick = reducedMotion ? 0 : (elapsed % 20000) / 20000;
+        // Animation tick: 0→1 over 80s, repeating (drives slow particle rotation)
+        const animationTick = reducedMotion ? 0 : (elapsed % 80000) / 80000;
 
-        // Ring radius: oscillate between 150 and 250 over 40s (20s each direction)
+        // Elapsed seconds for horizontal drift
+        const elapsedSec = elapsed / 1000;
+
+        // Ring radius: oscillate between 150 and 250 over 90s (gentle breathing)
         let currentRadius: number;
         if (reducedMotion) {
           currentRadius = ringRadius;
         } else {
-          const radiusCycle = (elapsed % 40000) / 40000;
+          const radiusCycle = (elapsed % 90000) / 90000;
           const radiusT =
             radiusCycle < 0.5
               ? easeInOut(radiusCycle * 2)
@@ -182,7 +195,11 @@ export const RingParticlesCanvas = forwardRef<RingParticlesCanvasHandle, RingPar
           const adjustedAngle = p.angle + animationTick * Math.PI * 2;
           const radialOffset = p.radialFraction * ringThickness;
           const r = currentRadius + radialOffset;
-          const x = centerX + Math.cos(adjustedAngle) * r;
+          // Horizontal drift: each particle floats side-to-side at its own pace
+          const drift = reducedMotion
+            ? 0
+            : Math.sin(elapsedSec * 0.15 * p.driftSpeed + p.driftPhase) * p.driftAmplitude;
+          const x = centerX + Math.cos(adjustedAngle) * r + drift;
           const y = centerY + Math.sin(adjustedAngle) * r;
 
           ctx.globalAlpha = p.alpha;

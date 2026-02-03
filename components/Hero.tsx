@@ -104,21 +104,21 @@ export const Hero: React.FC = () => {
       {/* Canvas-based particle ring background (cross-browser) */}
       <RingParticlesCanvas
         ref={canvasRef}
-        ringRadius={100}
-        ringThickness={600}
-        particleCount={80}
-        particleRows={25}
+        ringRadius={80}
+        ringThickness={750}
+        particleCount={140}
+        particleRows={35}
         particleSize={1.4}
         particleColor="#121317"
-        particleMinAlpha={0.08}
-        particleMaxAlpha={0.8}
+        particleMinAlpha={0.06}
+        particleMaxAlpha={0.7}
         seed={200}
         className="absolute inset-0 w-full h-full"
       />
 
       {/* White glow behind text for readability */}
       <div className="absolute inset-0 z-[5] pointer-events-none" style={{
-        background: 'radial-gradient(ellipse 70% 50% at 50% 45%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 40%, transparent 70%)',
+        background: 'radial-gradient(ellipse 75% 55% at 50% 45%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.3) 55%, transparent 75%)',
       }} />
 
       <div className="z-10 text-center px-4 max-w-5xl mx-auto space-y-8 animate-fade-in">
