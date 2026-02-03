@@ -60,10 +60,20 @@ function Footerdemo({ onOpenCookieSettings }: { onOpenCookieSettings?: () => voi
           <div>
             <h3 className="mb-4 text-lg font-semibold">Contact Us</h3>
             <address className="space-y-2 text-sm not-italic">
-              <p>123 Innovation Street</p>
-              <p>Tech City, TC 12345</p>
-              <p>Phone: (123) 456-7890</p>
-              <p>Email: hello@example.com</p>
+              <p>Meydan Road, Nad Al Sheba</p>
+              <p>Dubai, U.A.E.</p>
+              <p>
+                WhatsApp:{" "}
+                <a
+                  href="https://wa.me/971526830203"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-primary"
+                >
+                  +971 52 683 0203
+                </a>
+              </p>
+              <p>Email: hello@novamir.ai</p>
             </address>
           </div>
           <div className="relative">
