@@ -148,10 +148,10 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">groups</span>
-              <span className="text-sm font-semibold text-surface-on">5x volunteer engagement</span>
+              <span className="text-sm font-semibold text-surface-on">80% less admin time</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
-              Organizations using the platform see 5x higher volunteer retention and a 200% increase in coordinated mission completions year over year.
+              Organizations using the platform cut administrative overhead by up to 80%, freeing teams to spend more time on the missions that matter to veterans.
             </p>
           </div>
         ),
@@ -178,10 +178,10 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">Veterans org — 12 states connected</span>
+              <span className="text-sm font-semibold text-surface-on">E-veterans org — first missions launched</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
-              A national veterans organization unified chapters across 12 states on the platform, coordinating 300+ missions in a single year with 95% completion rate.
+              A veterans organization started managing their first missions, switching from paper notes and friction-filled databases to the new platform.
             </p>
           </div>
         ),
@@ -300,18 +300,26 @@ function TiltImage({ src, alt, glowColor = "bg-emerald-500/60", maxWidth = "max-
 
 export const ProductSection: React.FC = () => {
   return (
-    <section id="product" className="py-24 max-w-[1400px] mx-auto px-4 sm:px-8">
+    <section id="product" className="py-24 max-w-[1400px] mx-auto px-4 sm:px-8 overflow-hidden">
       {/* Products — alternating image left/right */}
       <div className="flex flex-col gap-24 lg:gap-36">
         {products.map((product, idx) => {
           const imageRight = idx % 2 === 0;
+          const textFromX = imageRight ? -60 : 60;
+          const imgFromX = imageRight ? 60 : -60;
           return (
             <div
               key={idx}
               className={`group flex flex-col ${imageRight ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-10 lg:gap-16 items-center`}
             >
               {/* Text */}
-              <div className="flex-1 flex flex-col justify-center">
+              <motion.div
+                className="flex-1 flex flex-col justify-center"
+                initial={{ opacity: 0, x: textFromX }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+              >
                 <div className="flex items-center gap-3 mb-4">
                   <span className="material-symbols-outlined text-2xl text-surface-on-variant">{product.icon}</span>
                   <span className="text-sm font-medium tracking-widest uppercase text-surface-on-variant">{product.subtitle}</span>
@@ -324,10 +332,16 @@ export const ProductSection: React.FC = () => {
                   defaultTab={product.tabs[0].id}
                   className="max-w-full"
                 />
-              </div>
+              </motion.div>
 
               {/* Image */}
-              <div className="flex-1 w-full flex items-center justify-center">
+              <motion.div
+                className="flex-1 w-full flex items-center justify-center"
+                initial={{ opacity: 0, x: imgFromX }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+              >
                 {product.transparent ? (
                   <TiltImage src={product.img} alt={product.title} glowColor={product.glowColor} maxWidth={product.imgMaxWidth} />
                 ) : (
@@ -340,7 +354,7 @@ export const ProductSection: React.FC = () => {
                     />
                   </div>
                 )}
-              </div>
+              </motion.div>
             </div>
           );
         })}
