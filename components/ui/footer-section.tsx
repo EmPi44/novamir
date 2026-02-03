@@ -43,19 +43,16 @@ function Footerdemo() {
           <div>
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
             <nav className="space-y-2 text-sm">
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a href="#welcome" className="block transition-colors hover:text-primary">
                 Home
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
-                About Us
+              <a href="#product" className="block transition-colors hover:text-primary">
+                Solutions
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
-                Services
+              <a href="#journey" className="block transition-colors hover:text-primary">
+                Your Journey
               </a>
-              <a href="#" className="block transition-colors hover:text-primary">
-                Products
-              </a>
-              <a href="#" className="block transition-colors hover:text-primary">
+              <a href="#booking" className="block transition-colors hover:text-primary">
                 Contact
               </a>
             </nav>
@@ -129,17 +126,14 @@ function Footerdemo() {
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 text-center md:flex-row">
           <p className="text-sm text-muted-foreground">
-            © 2024 Your Company. All rights reserved.
+            © 2025 Novamir. All rights reserved.
           </p>
           <nav className="flex gap-4 text-sm">
-            <a href="#" className="transition-colors hover:text-primary">
+            <a href="/privacy" className="transition-colors hover:text-primary">
               Privacy Policy
             </a>
-            <a href="#" className="transition-colors hover:text-primary">
-              Terms of Service
-            </a>
-            <a href="#" className="transition-colors hover:text-primary">
-              Cookie Settings
+            <a href="/terms-conditions" className="transition-colors hover:text-primary">
+              Terms & Conditions
             </a>
           </nav>
         </div>

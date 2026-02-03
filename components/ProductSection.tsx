@@ -20,7 +20,7 @@ interface Product {
 const products: Product[] = [
   {
     title: "Gini",
-    subtitle: "AI Outbound Agent",
+    subtitle: "AI Sales Assistant - WhatsApp",
     desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
     img: giniImg,
     icon: "smart_toy",
@@ -76,7 +76,7 @@ const products: Product[] = [
   },
   {
     title: "Henry",
-    subtitle: "AI Voice Agent",
+    subtitle: "AI Customer Service - Voice Agent",
     desc: "Intelligent customer service that understands context, resolves inquiries instantly, and escalates only when it matters. Always on, always helpful.",
     img: henryImg,
     icon: "support_agent",

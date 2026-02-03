@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
     <title>Novamir - AI Systems That Reclaim Your Time</title>
     <meta name="description" content="Novamir builds scalable AI systems that eliminate thousands of hours of manual work. Reclaim your time for revenue, customers, and core decisions." />
     <link rel="canonical" href="https://novamir.com/" />
@@ -27,9 +28,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.tailwindcss.com" />
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    </noscript>
     <style>
       /* Custom properties registration for Houdini/Modern CSS features that Tailwind doesn't fully abstract yet */
       @property --ring-x { syntax: '<number>'; inherits: false; initial-value: 50; }
@@ -37,12 +42,12 @@
       @property --ring-interactive { syntax: '<number>'; inherits: false; initial-value: 0; }
       @property --animation-tick { syntax: '<number>'; inherits: false; initial-value: 0; }
       @property --ring-radius { syntax: '<number> | auto'; inherits: false; initial-value: auto; }
-      
+
       /* Smooth scrolling for anchor links */
       html {
         scroll-behavior: smooth;
       }
-      
+
       body {
         font-family: 'Inter', sans-serif;
       }
@@ -150,23 +155,64 @@
 }
 </script>
 <link rel="stylesheet" href="/index.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Novamir",
+      "url": "https://novamir.com",
+      "description": "Novamir builds scalable AI systems that eliminate thousands of hours of manual work.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "url": "https://novamir.com/#booking"
+      }
+    }
+    </script>
 </head>
   <body class="bg-surface text-surface-on antialiased overflow-x-hidden selection:bg-primary selection:text-white">
     <div id="root">
-      <!-- Server-rendered fallback for SEO crawlers -->
-      <main>
-        <h1>Novamir - AI Systems That Reclaim Your Time</h1>
-        <p>We eliminated 10,000+ hours of manual work with scalable AI systems. Your hours reclaimed for revenue, customers, and core decisions.</p>
-        <p>Novamir builds next-generation AI systems and agentic development platforms that help businesses automate repetitive tasks, streamline workflows, and focus on what matters most. Our solutions are trusted by companies like Resapass, Dronicle, Umami Comms, Pods and Spices, and Missions of Honor.</p>
-        <p>From intelligent automation to custom AI integrations, we deliver measurable results that transform how your team works. Book a consultation to discover how Novamir can reclaim your time.</p>
-      </main>
-      <footer>
-        <nav>
+      <!-- Server-rendered fallback for SEO crawlers - replaced by React on hydration -->
+      <header>
+        <nav aria-label="Main navigation">
           <a href="#welcome">Home</a>
           <a href="#product">Solutions</a>
           <a href="#journey">Your Journey</a>
           <a href="#booking">Contact</a>
-          <a href="/privacy">Privacy Policy</a>
+        </nav>
+      </header>
+      <main>
+        <h1>Novamir - AI Systems That Reclaim Your Time</h1>
+        <section id="welcome">
+          <h2>Experience Liftoff</h2>
+          <p>We eliminated 10,000+ hours of manual work with scalable AI systems. Hours reclaimed for revenue, customers, and core decisions. Novamir partners with forward-thinking businesses to design, build, and deploy AI-powered automation that drives measurable results.</p>
+          <p>The team of AI engineers and product strategists at Novamir works alongside organizations to identify high-impact opportunities for automation. Whether it is data processing, customer support, content generation, or operational workflows, we build systems that scale with the business and adapt to changing needs.</p>
+        </section>
+        <section id="product">
+          <h2>Our Solutions</h2>
+          <p>Novamir delivers end-to-end AI solutions tailored to specific business needs. From intelligent document processing and automated customer interactions to predictive analytics and workflow optimization, our platforms integrate seamlessly with existing technology stacks.</p>
+          <p>Each solution is built on enterprise-grade infrastructure with security, reliability, and performance at its core. We handle the complexity of AI deployment so teams can focus on strategic growth and serving customers better.</p>
+        </section>
+        <section id="journey">
+          <h2>Your Journey With Us</h2>
+          <p>The proven process begins with a deep-dive discovery session to understand unique challenges and goals. We then design a custom AI roadmap, build and test the solution, and provide ongoing support to ensure long-term success. Every engagement is collaborative, transparent, and focused on delivering ROI from day one.</p>
+          <p>Trusted by innovative companies including Resapass, Dronicle, Umami Comms, Pods and Spices, and Missions of Honor. In collaboration with Genie AI Solutions, we bring together the best minds in artificial intelligence to solve real business problems.</p>
+        </section>
+        <section id="booking">
+          <h2>Book a Consultation</h2>
+          <p>Ready to reclaim lost time? Schedule a free consultation with the Novamir team to explore how scalable AI systems can transform operations. We will assess current workflows, identify automation opportunities, and outline a clear path to implementation.</p>
+        </section>
+      </main>
+      <footer>
+        <nav aria-label="Footer navigation">
+          <a href="#welcome">Home</a>
+          <a href="#product">Solutions</a>
+          <a href="#journey">Your Journey</a>
+          <a href="#booking">Contact</a>
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-conditions">Terms & Conditions</a>
         </nav>
         <p>&copy; 2025 Novamir. All rights reserved.</p>
       </footer>
