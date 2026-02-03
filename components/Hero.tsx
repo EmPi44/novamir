@@ -170,7 +170,10 @@ export const Hero: React.FC = () => {
         </p>
 
         <div className="mt-12">
-          <LiquidMetalCTA variant="hero" />
+          <LiquidMetalCTA
+            variant="hero"
+            onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+          />
         </div>
       </div>
 

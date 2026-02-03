@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 
 import { ProductSection } from './components/ProductSection';
 import { JourneySection } from './components/JourneySection';
+import { BookingSection } from './components/BookingSection';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Hero />
         <ProductSection />
         <JourneySection />
+        <BookingSection />
       </main>
       
       <footer className="py-12 text-center text-surface-on-variant text-sm">
