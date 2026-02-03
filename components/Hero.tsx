@@ -76,9 +76,12 @@ export const Hero: React.FC = () => {
         el.classList.add('interactive');
         isInteractive = true;
       }
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      
+      const rawX = e.clientX / window.innerWidth;
+      const rawY = e.clientY / window.innerHeight;
+      // Clamp movement to ±15% around center so the pattern stays focused
+      const x = 50 + (rawX - 0.5) * 30;
+      const y = 50 + (rawY - 0.5) * 30;
+
       el.style.setProperty('--ring-x', x.toString());
       el.style.setProperty('--ring-y', y.toString());
       el.style.setProperty('--ring-interactive', '1');
@@ -129,8 +132,8 @@ export const Hero: React.FC = () => {
         @keyframes ripple { 0% { --animation-tick: 0; } 100% { --animation-tick: 1; } }
         @keyframes ring { 0% { --ring-radius: 150; } 100% { --ring-radius: 250; } }
         #welcome {
-          animation: ripple 6s linear infinite, ring 6s ease-in-out infinite alternate;
-          transition: --ring-x 3s ease, --ring-y 3s ease;
+          animation: ripple 20s linear infinite, ring 20s ease-in-out infinite alternate;
+          transition: --ring-x 1.2s ease, --ring-y 1.2s ease;
         }
         @keyframes marquee-scroll {
           0% { transform: translateX(0); }
