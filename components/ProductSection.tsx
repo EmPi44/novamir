@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { AnimatedTabs, type Tab } from '@/components/ui/animated-tabs';
 import giniImg from '../assets/gini.png';
+import henryImg from '../assets/henry.png';
+import mohImg from '../assets/moh.png';
 
 interface Product {
   title: string;
@@ -11,6 +13,8 @@ interface Product {
   icon: string;
   tabs: Tab[];
   transparent?: boolean;
+  glowColor?: string;
+  imgMaxWidth?: string;
 }
 
 const products: Product[] = [
@@ -21,6 +25,7 @@ const products: Product[] = [
     img: giniImg,
     icon: "smart_toy",
     transparent: true,
+    glowColor: "bg-emerald-500/60",
     tabs: [
       {
         id: "gini-outcome",
@@ -71,10 +76,12 @@ const products: Product[] = [
   },
   {
     title: "Henry",
-    subtitle: "AI Inbound Assistant",
+    subtitle: "AI Voice Agent",
     desc: "Intelligent customer service that understands context, resolves inquiries instantly, and escalates only when it matters. Always on, always helpful.",
-    img: "https://picsum.photos/id/2/800/600",
+    img: henryImg,
     icon: "support_agent",
+    transparent: true,
+    glowColor: "bg-blue-500/60",
     tabs: [
       {
         id: "henry-outcome",
@@ -127,8 +134,11 @@ const products: Product[] = [
     title: "Missions of Honor Platform",
     subtitle: "Non-Profit Collaboration",
     desc: "A purpose-built collaboration platform connecting veterans, volunteers, and organizations to coordinate missions and create lasting impact together.",
-    img: "https://picsum.photos/id/3/800/600",
+    img: mohImg,
     icon: "diversity_3",
+    transparent: true,
+    glowColor: "bg-amber-500/50",
+    imgMaxWidth: "max-w-2xl",
     tabs: [
       {
         id: "moh-outcome",
@@ -236,7 +246,7 @@ const products: Product[] = [
 const tiltSpring = { damping: 30, stiffness: 80, mass: 0.8 };
 const glowSpring = { damping: 40, stiffness: 60, mass: 1 };
 
-function TiltImage({ src, alt }: { src: string; alt: string }) {
+function TiltImage({ src, alt, glowColor = "bg-emerald-500/60", maxWidth = "max-w-md" }: { src: string; alt: string; glowColor?: string; maxWidth?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
@@ -269,15 +279,15 @@ function TiltImage({ src, alt }: { src: string; alt: string }) {
       style={{ rotateX, rotateY, scale, perspective: 1000 }}
       className="relative flex items-center justify-center [transform-style:preserve-3d] will-change-transform"
     >
-      {/* Green glow that follows mouse */}
+      {/* Glow that follows mouse */}
       <motion.div
-        className="absolute w-[110%] h-[110%] rounded-full bg-emerald-500/60 blur-[150px] pointer-events-none"
+        className={`absolute w-[110%] h-[110%] rounded-full ${glowColor} blur-[150px] pointer-events-none`}
         style={{ x: glowX, y: glowY }}
       />
       <img
         src={src}
         alt={alt}
-        className="relative z-10 w-full max-w-md object-contain"
+        className={`relative z-10 w-full ${maxWidth} object-contain`}
         loading="lazy"
       />
     </motion.div>
@@ -315,7 +325,7 @@ export const ProductSection: React.FC = () => {
               {/* Image */}
               <div className="flex-1 w-full flex items-center justify-center">
                 {product.transparent ? (
-                  <TiltImage src={product.img} alt={product.title} />
+                  <TiltImage src={product.img} alt={product.title} glowColor={product.glowColor} maxWidth={product.imgMaxWidth} />
                 ) : (
                   <div className="aspect-[4/3] w-full rounded-[2rem] overflow-hidden bg-surface-container">
                     <img

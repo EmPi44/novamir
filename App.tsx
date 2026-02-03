@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 
 import { ProductSection } from './components/ProductSection';
+import { JourneySection } from './components/JourneySection';
 import { DevelopersSection } from './components/DevelopersSection';
 import { CallToAction } from './components/CallToAction';
 
@@ -13,6 +14,7 @@ function App() {
       <main>
         <Hero />
         <ProductSection />
+        <JourneySection />
         <DevelopersSection />
         <CallToAction />
       </main>

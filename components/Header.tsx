@@ -3,7 +3,7 @@ import { Logo } from './Logo';
 
 const navItems = [
   { label: 'Solutions', href: '#product' },
-  { label: 'Your Journey With Us', href: '#developers' },
+  { label: 'Your Journey With Us', href: '#journey' },
   { label: 'About', href: '#' },
 ];
 
