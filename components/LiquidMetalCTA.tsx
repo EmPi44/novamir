@@ -102,17 +102,15 @@ export const LiquidMetalCTA: React.FC<LiquidMetalCTAProps> = ({ variant = 'defau
                  : "absolute inset-0 p-2 rounded-full bg-[conic-gradient(from_180deg,blue,purple,red,purple,blue)] grayscale group-hover:grayscale-0 transition-all duration-300 mask-linear-xor"
              }></div>
 
-             {/* Icon inside button */}
-             <svg className={
-               isHero
-                 ? "w-3 md:w-4 fill-[#65615f] rotate-[135deg] relative z-20 pointer-events-none"
-                 : "w-[60px] md:w-[100px] fill-[#65615f] -rotate-45 relative z-20 pointer-events-none"
-             } viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M843.968 896a51.072 51.072 0 0 1-51.968-52.032V232H180.032A51.072 51.072 0 0 1 128 180.032c0-29.44 22.528-52.032 52.032-52.032h663.936c29.44 0 52.032 22.528 52.032 52.032v663.936c0 29.44-22.528 52.032-52.032 52.032z">
-                </path>
-                <path d="M180.032 896a49.92 49.92 0 0 1-36.48-15.616c-20.736-20.8-20.736-53.76 0-72.832L807.616 143.616c20.864-20.8 53.76-20.8 72.832 0 20.8 20.8 20.8 53.76 0 72.768L216.384 880.384a47.232 47.232 0 0 1-36.352 15.616z">
-                </path>
-              </svg>
+             {/* Icon inside button (default variant only) */}
+             {!isHero && (
+               <svg className="w-[60px] md:w-[100px] fill-[#65615f] -rotate-45 relative z-20 pointer-events-none" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M843.968 896a51.072 51.072 0 0 1-51.968-52.032V232H180.032A51.072 51.072 0 0 1 128 180.032c0-29.44 22.528-52.032 52.032-52.032h663.936c29.44 0 52.032 22.528 52.032 52.032v663.936c0 29.44-22.528 52.032-52.032 52.032z">
+                  </path>
+                  <path d="M180.032 896a49.92 49.92 0 0 1-36.48-15.616c-20.736-20.8-20.736-53.76 0-72.832L807.616 143.616c20.864-20.8 53.76-20.8 72.832 0 20.8 20.8 20.8 53.76 0 72.768L216.384 880.384a47.232 47.232 0 0 1-36.352 15.616z">
+                  </path>
+                </svg>
+             )}
           </div>
         </div>
 
