@@ -4,8 +4,6 @@ import { Hero } from './components/Hero';
 
 import { ProductSection } from './components/ProductSection';
 import { JourneySection } from './components/JourneySection';
-import { DevelopersSection } from './components/DevelopersSection';
-import { CallToAction } from './components/CallToAction';
 
 function App() {
   return (
@@ -15,8 +13,6 @@ function App() {
         <Hero />
         <ProductSection />
         <JourneySection />
-        <DevelopersSection />
-        <CallToAction />
       </main>
       
       <footer className="py-12 text-center text-surface-on-variant text-sm">
