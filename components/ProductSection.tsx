@@ -1,10 +1,87 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { AnimatedTabs, type Tab } from '@/components/ui/animated-tabs';
+import { FeatureSectionWithHover, type SkillFeature } from '@/components/ui/feature-section-hover';
+import {
+  IconTargetArrow,
+  IconRepeat,
+  IconCalendarEvent,
+  IconMessageQuestion,
+  IconBellRinging,
+  IconAddressBook,
+  IconBolt,
+  IconLanguage,
+  IconUserHeart,
+  IconInfinity,
+  IconTrendingUp,
+} from '@tabler/icons-react';
 import giniImg from '../assets/gini.png';
 import henryImg from '../assets/henry.png';
 import mohImg from '../assets/moh.png';
 import gccImg from '../assets/gcc.png';
+
+// Gini Hard Skills
+const giniHardSkills: SkillFeature[] = [
+  {
+    title: "Lead Qualification",
+    description: "Automatically scores and qualifies leads based on engagement and buying signals.",
+    icon: <IconTargetArrow className="w-5 h-5" />,
+  },
+  {
+    title: "Follow-Up",
+    description: "Never lets a lead go cold with intelligent, timely follow-up sequences.",
+    icon: <IconRepeat className="w-5 h-5" />,
+  },
+  {
+    title: "Meeting Scheduling",
+    description: "Books meetings directly on your calendar with timezone-aware availability.",
+    icon: <IconCalendarEvent className="w-5 h-5" />,
+  },
+  {
+    title: "Knowledge Base Q&A",
+    description: "Answers product questions instantly from your docs and FAQs.",
+    icon: <IconMessageQuestion className="w-5 h-5" />,
+  },
+  {
+    title: "Team Notification",
+    description: "Alerts your sales team when high-value leads need human attention.",
+    icon: <IconBellRinging className="w-5 h-5" />,
+  },
+  {
+    title: "Manage CRM",
+    description: "Automatically logs conversations and updates contact records.",
+    icon: <IconAddressBook className="w-5 h-5" />,
+  },
+];
+
+// Gini Soft Skills
+const giniSoftSkills: SkillFeature[] = [
+  {
+    title: "Instant Response",
+    description: "Responds within seconds, 24/7, so leads never wait.",
+    icon: <IconBolt className="w-5 h-5" />,
+  },
+  {
+    title: "Multi-Lingual",
+    description: "Communicates fluently in 50+ languages to reach global audiences.",
+    icon: <IconLanguage className="w-5 h-5" />,
+  },
+  {
+    title: "Personalized Communication",
+    description: "Tailors every message to the prospect's industry, role, and context.",
+    icon: <IconUserHeart className="w-5 h-5" />,
+  },
+  {
+    title: "Persistent Engagement",
+    description: "Follows up consistently without being pushy.",
+    icon: <IconInfinity className="w-5 h-5" />,
+  },
+  {
+    title: "Scales with your needs",
+    description: "Handles 10 or 10,000 conversations without quality degradation.",
+    icon: <IconTrendingUp className="w-5 h-5" />,
+  },
+];
 
 interface Product {
   title: string;
@@ -45,17 +122,37 @@ const products: Product[] = [
       },
       {
         id: "gini-feature",
-        label: "Feature",
+        label: "Skills",
         content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">auto_awesome</span>
-              <span className="text-sm font-semibold text-surface-on">Multi-channel sequencing</span>
-            </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              Automated email, LinkedIn, and SMS outreach with AI-crafted personalization. Smart scheduling adapts to each prospect's timezone and engagement patterns.
-            </p>
-          </div>
+          <AnimatedTabs
+            layoutId="gini-skills-subtabs"
+            defaultTab="hard-skills"
+            className="max-w-full"
+            tabs={[
+              {
+                id: "hard-skills",
+                label: "Hard Skills",
+                content: (
+                  <FeatureSectionWithHover
+                    features={giniHardSkills}
+                    accentColor="bg-emerald-500"
+                    hoverGradient="from-emerald-100 dark:from-emerald-900/30"
+                  />
+                ),
+              },
+              {
+                id: "soft-skills",
+                label: "Soft Skills",
+                content: (
+                  <FeatureSectionWithHover
+                    features={giniSoftSkills}
+                    accentColor="bg-emerald-500"
+                    hoverGradient="from-emerald-100 dark:from-emerald-900/30"
+                  />
+                ),
+              },
+            ]}
+          />
         ),
       },
       {
