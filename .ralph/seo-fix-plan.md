@@ -19,16 +19,16 @@
 - [x] T6: ~~Add OG tags~~ VERIFIED — all 5 pages have complete OG tags (type, title, description, url, site_name, image with width/height).
 - [x] T7: ~~Fix image alt text~~ VERIFIED — all rendered images have descriptive alt text. Client logos use company names, product images use product titles, developer section uses role names.
 - [x] T8: Fixed heading hierarchy — added sr-only h2 "Our Solutions" to ProductSection before its h3 product titles, fixing h1→h3 skip. CallToAction/VideoSection/DevelopersSection are unused (not in App.tsx). Footer h2→h3 hierarchy is correct.
-- [ ] T9: Add `<main>` landmark to public page templates — ensure each public/*.html wraps its primary content in a `<main>` element. index.html already has `<main>` in the SEO fallback.
-- [ ] T10: Add `rel="noopener noreferrer"` to ALL external links that use `target="_blank"`. Check components/*.tsx and public/*.html for external links.
-- [ ] T11: Add `loading="lazy"` to below-fold images. Check components that render images (ProductSection.tsx, Hero.tsx, etc.) and add lazy loading to images not in the initial viewport.
+- [x] T9: ~~Add main landmark~~ VERIFIED — all 5 HTML files already have `<main>` elements wrapping primary content.
+- [x] T10: ~~Add rel noopener~~ VERIFIED — all external links with target="_blank" already have rel="noopener noreferrer" (contact.html, BookingSection.tsx, footer-section.tsx).
+- [x] T11: ~~Add lazy loading~~ VERIFIED — Hero images use loading="eager" (above-fold), ProductSection images use loading="lazy" (below-fold). All correct.
 
 ### Phase 3: Content & Compliance
 
-- [ ] T12: Ensure content pages have meaningful text — check /contact page has sufficient content (not just a form/links). Add descriptive paragraphs where content is thin.
-- [ ] T13: Review keyword density — check homepage for over-optimization of any terms. Adjust if any keyword appears excessively.
-- [ ] T14: Fix empty anchor text — find any `<a>` tags wrapping images or icons without visible text and add `aria-label` or visible text for accessibility/SEO.
-- [ ] T15: Ensure all links use HTTPS — find any `http://` links in the codebase and upgrade to `https://`. Check all HTML files and components.
+- [x] T12: ~~Fix thin content~~ VERIFIED — contact page has substantial content (intro, consultation CTA, 4 contact cards with descriptions, "What Happens Next" section). No thin content issues found.
+- [x] T13: ~~Fix keyword density~~ VERIFIED — "novamir" appears 24x on homepage but mostly in meta/JSON-LD/nav (expected). No over-optimization in body copy.
+- [x] T14: Fixed empty anchor text — added aria-label="Novamir - Home" to Header logo link which wrapped an SVG without visible text.
+- [x] T15: ~~Fix HTTP links~~ VERIFIED — only http:// instances are SVG xmlns declarations (standard/correct). All actual hyperlinks use HTTPS.
 
 ### Phase 4: Verification & Cleanup
 
