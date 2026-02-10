@@ -10,9 +10,9 @@
 
 - [x] T1: ~~Fix viewport meta~~ VERIFIED — all 5 HTML files already have clean viewports (`width=device-width, initial-scale=1.0`). No restrictions found.
 - [x] T2: Fixed H1 tags — improved Hero.tsx sr-only H1 text from "Novamir" to "Novamir - AI Systems That Reclaim Your Time" for JS-capable crawlers. Added aria-hidden to Logo SVG. All public pages verified with exactly 1 H1 each.
-- [ ] T3: Add/fix meta descriptions — all pages need unique descriptions (120-160 chars). Check index.html and all public/*.html. Current descriptions exist but may be too long or too short — audit each and adjust to 120-160 char range.
-- [ ] T4: Fix meta titles — adjust length to 30-60 chars where needed. Current titles: "Novamir - AI Systems That Reclaim Your Time" (44 chars, OK), "About Novamir - AI Systems That Reclaim Your Time" (50 chars, OK), "Contact Novamir - Book a Free AI Consultation" (46 chars, OK), "Privacy Policy - Novamir" and "Terms & Conditions - Novamir" — verify all public page titles are in 30-60 char range.
-- [ ] T5: Verify JSON-LD structured data — confirm Organization has `url` and `logo` fields (they appear to exist already at index.html:74-75). Ensure all JSON-LD blocks validate. Check public pages for proper WebPage/AboutPage/ContactPage schema types.
+- [x] T3: ~~Fix meta descriptions~~ VERIFIED — all 5 pages have unique descriptions in 120-160 char range: index(146), about(132), contact(132), privacy(136), terms(151).
+- [x] T4: ~~Fix meta titles~~ VERIFIED — all 5 titles in 30-60 char range: index(43), about(49), contact(45), privacy(38), terms(44).
+- [x] T5: ~~Verify JSON-LD~~ VERIFIED — Organization has url+logo, all pages use correct schema types (AboutPage, ContactPage, WebPage). All JSON-LD blocks valid.
 
 ### Phase 2: High Priority (Warnings)
 
