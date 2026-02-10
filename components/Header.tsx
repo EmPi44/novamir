@@ -4,7 +4,7 @@ import { Logo } from './Logo';
 const navItems = [
   { label: 'Solutions', href: '#product' },
   { label: 'Your Journey With Us', href: '#journey' },
-  { label: 'About', href: '#booking' },
+  { label: "Let's Talk", href: '#booking' },
 ];
 
 export const Header: React.FC = () => {

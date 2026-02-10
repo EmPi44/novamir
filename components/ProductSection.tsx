@@ -230,7 +230,7 @@ const products: Product[] = [
   },
   {
     title: "Missions of Honor Platform",
-    subtitle: "Non-Profit Collaboration",
+    subtitle: "Collaboration Platform",
     desc: "A purpose-built collaboration platform connecting veterans, volunteers, and organizations to coordinate missions and create lasting impact together.",
     img: mohImg,
     icon: "diversity_3",
@@ -287,7 +287,7 @@ const products: Product[] = [
   },
   {
     title: "Gini Command Center",
-    subtitle: "Unified Operations Hub",
+    subtitle: "Customer Relationship Management (CRM)",
     desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock - so your team can focus on closing.",
     img: gccImg,
     icon: "hub",

@@ -12,7 +12,7 @@ const journeyData: TimelineEntry[] = [
           <span className="text-sm font-medium tracking-widest uppercase text-surface-on-variant">Step 1</span>
         </div>
         <p className="text-base text-surface-on-variant leading-relaxed mb-5">
-          We start with a focused conversation to understand your business, the user and where AI can create the most impact. No pitch decks - just honest questions and clear answers.
+          We start with a focused conversation to understand your business and your next milestone to see if and how AI can make the impact.
         </p>
         <ul className="space-y-3">
           <li className="flex items-start gap-3 text-sm text-surface-on-variant">
