@@ -16,9 +16,9 @@
 
 ### Phase 2: High Priority (Warnings)
 
-- [ ] T6: Add og:description and og:image to any subpages missing them. Verify all public/*.html have complete OG tags (og:title, og:description, og:image, og:url, og:type, og:site_name).
-- [ ] T7: Add missing image alt text — audit all `<img>` tags across components/*.tsx and public/*.html. Every image must have descriptive alt text (not empty, not just filename).
-- [ ] T8: Fix heading hierarchy — remove empty headings, fix heading level skips (e.g., h1 -> h3 without h2). Check components like CallToAction.tsx which uses h3 without preceding h2 in its section. Check VideoSection.tsx line 31 for empty h2.
+- [x] T6: ~~Add OG tags~~ VERIFIED — all 5 pages have complete OG tags (type, title, description, url, site_name, image with width/height).
+- [x] T7: ~~Fix image alt text~~ VERIFIED — all rendered images have descriptive alt text. Client logos use company names, product images use product titles, developer section uses role names.
+- [x] T8: Fixed heading hierarchy — added sr-only h2 "Our Solutions" to ProductSection before its h3 product titles, fixing h1→h3 skip. CallToAction/VideoSection/DevelopersSection are unused (not in App.tsx). Footer h2→h3 hierarchy is correct.
 - [ ] T9: Add `<main>` landmark to public page templates — ensure each public/*.html wraps its primary content in a `<main>` element. index.html already has `<main>` in the SEO fallback.
 - [ ] T10: Add `rel="noopener noreferrer"` to ALL external links that use `target="_blank"`. Check components/*.tsx and public/*.html for external links.
 - [ ] T11: Add `loading="lazy"` to below-fold images. Check components that render images (ProductSection.tsx, Hero.tsx, etc.) and add lazy loading to images not in the initial viewport.
