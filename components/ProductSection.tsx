@@ -99,7 +99,7 @@ const products: Product[] = [
   {
     title: "Gini",
     subtitle: "AI Sales Assistant - WhatsApp",
-    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
+    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock - so your team can focus on closing.",
     img: giniImg,
     icon: "smart_toy",
     transparent: true,
@@ -162,7 +162,7 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">SaaS Series A — 147% pipeline growth</span>
+              <span className="text-sm font-semibold text-surface-on">SaaS Series A - 147% pipeline growth</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
               A B2B SaaS startup deployed Gini to replace manual SDR outreach. Within 60 days they booked 3x more demos while cutting outbound costs by half.
@@ -191,7 +191,7 @@ const products: Product[] = [
               <span className="text-sm font-semibold text-surface-on">85% faster resolution times</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
-              Henry resolves most inquiries instantly, reducing average handle time from 12 minutes to under 2 — while lifting customer satisfaction scores by 40%.
+              Henry resolves most inquiries instantly, reducing average handle time from 12 minutes to under 2 - while lifting customer satisfaction scores by 40%.
             </p>
           </div>
         ),
@@ -218,7 +218,7 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">E-commerce brand — 70% ticket deflection</span>
+              <span className="text-sm font-semibold text-surface-on">E-commerce brand - 70% ticket deflection</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
               A DTC brand with 50K+ monthly support tickets deployed Henry and deflected 70% of volume within the first month, saving $120K annually in support costs.
@@ -263,7 +263,7 @@ const products: Product[] = [
               <span className="text-sm font-semibold text-surface-on">Mission coordination hub</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
-              Centralized dashboards for mission planning, volunteer matching, resource allocation, and real-time progress tracking — all in one secure workspace.
+              Centralized dashboards for mission planning, volunteer matching, resource allocation, and real-time progress tracking - all in one secure workspace.
             </p>
           </div>
         ),
@@ -275,7 +275,7 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">E-veterans org — first missions launched</span>
+              <span className="text-sm font-semibold text-surface-on">E-veterans org - first missions launched</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
               A veterans organization started managing their first missions, switching from paper notes and friction-filled databases to the new platform.
@@ -288,7 +288,7 @@ const products: Product[] = [
   {
     title: "Gini Command Center",
     subtitle: "Unified Operations Hub",
-    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
+    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock - so your team can focus on closing.",
     img: gccImg,
     icon: "hub",
     transparent: true,
@@ -332,10 +332,10 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">Enterprise — 8 agents, 1 dashboard</span>
+              <span className="text-sm font-semibold text-surface-on">Enterprise - 8 agents, 1 dashboard</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
-              A mid-market company managing 8 AI agents across sales, support, and ops consolidated everything into the Command Center — reducing management overhead by 60%.
+              A mid-market company managing 8 AI agents across sales, support, and ops consolidated everything into the Command Center - reducing management overhead by 60%.
             </p>
           </div>
         ),
@@ -398,7 +398,7 @@ function TiltImage({ src, alt, glowColor = "bg-emerald-500/60", maxWidth = "max-
 export const ProductSection: React.FC = () => {
   return (
     <section id="product" className="py-24 max-w-[1400px] mx-auto px-4 sm:px-8 overflow-hidden">
-      {/* Products — alternating image left/right */}
+      {/* Products - alternating image left/right */}
       <div className="flex flex-col gap-24 lg:gap-36">
         {products.map((product, idx) => {
           const imageRight = idx % 2 === 0;

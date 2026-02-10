@@ -24,7 +24,7 @@ export const SolutionSection: React.FC = () => {
       <p className="text-sm font-medium tracking-widest uppercase text-surface-on-variant mb-16">Our Solution</p>
 
       <div ref={sectionRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        {/* Left — Description */}
+        {/* Left - Description */}
         <div
           className={`flex flex-col gap-6 opacity-0 ${visible ? 'animate-slide-in-left' : ''}`}
         >
@@ -34,7 +34,7 @@ export const SolutionSection: React.FC = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-surface-on-variant leading-relaxed font-light max-w-lg">
-            Your AI-powered WhatsApp sales agent that turns conversations into conversions — qualifying leads, nurturing prospects, and closing deals around the clock.
+            Your AI-powered WhatsApp sales agent that turns conversations into conversions - qualifying leads, nurturing prospects, and closing deals around the clock.
           </p>
           <ul className="flex flex-col gap-4 mt-2">
             {[
@@ -50,7 +50,7 @@ export const SolutionSection: React.FC = () => {
           </ul>
         </div>
 
-        {/* Right — Image */}
+        {/* Right - Image */}
         <div
           className={`flex items-center justify-center opacity-0 ${visible ? 'animate-slide-in-right' : ''}`}
           style={{ animationDelay: '0.15s' }}
@@ -58,7 +58,7 @@ export const SolutionSection: React.FC = () => {
           <div className="rounded-[2rem] overflow-hidden bg-gradient-to-br from-emerald-950 to-emerald-900 shadow-2xl">
             <img
               src={giniImg}
-              alt="Gini — AI WhatsApp Sales Agent"
+              alt="Gini - AI WhatsApp Sales Agent"
               className="w-full max-w-md object-cover"
               loading="lazy"
             />
