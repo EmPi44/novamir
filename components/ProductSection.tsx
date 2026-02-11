@@ -14,10 +14,6 @@ import {
   IconUserHeart,
   IconInfinity,
   IconTrendingUp,
-  IconChartBar,
-  IconUsers,
-  IconSpeakerphone,
-  IconPackage,
   IconHeadset,
   IconBook,
   IconClipboardCheck,
@@ -155,29 +151,6 @@ const henrySoftSkills: SkillFeature[] = [
   },
 ];
 
-// Command Center Features
-const commandCenterFeatures: SkillFeature[] = [
-  {
-    title: "Track KPIs & Metrics",
-    description: "Real-time dashboards for pipeline health, response times, and conversion rates.",
-    icon: <IconChartBar className="w-5 h-5" />,
-  },
-  {
-    title: "Manage Leads & Customers",
-    description: "A CRM your team actually uses - track every lead from first touch to close.",
-    icon: <IconUsers className="w-5 h-5" />,
-  },
-  {
-    title: "Outbound Campaigns",
-    description: "Launch and manage WhatsApp outbound campaigns with templates and scheduling.",
-    icon: <IconSpeakerphone className="w-5 h-5" />,
-  },
-  {
-    title: "Product Management",
-    description: "Manage your product catalog so Gini can reference it in every conversation.",
-    icon: <IconPackage className="w-5 h-5" />,
-  },
-];
 
 interface Product {
   title: string;
@@ -557,41 +530,117 @@ const products: Product[] = [
         id: "moh-outcome",
         label: "Business Outcome",
         content: (
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg text-surface-on">groups</span>
-                <span className="text-sm font-semibold text-surface-on">80% less admin time</span>
+          <div className="flex flex-col gap-5">
+            <div className="rounded-xl bg-amber-600 px-4 py-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-lg text-white">group</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Who is it for</span>
               </div>
-              <p className="text-sm text-surface-on-variant leading-relaxed">
-                Organizations using the platform cut administrative overhead by up to 80%, freeing teams to spend more time on the missions that matter to veterans.
+              <p className="text-base font-medium text-white/95 leading-snug">
+                Veteran organizations, nonprofits, and volunteer coordinators who need a single place to plan, coordinate, and manage missions.
               </p>
             </div>
+
             <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-semibold uppercase tracking-wider text-surface-on-variant/70">Who is it for</span>
-              <p className="text-sm text-surface-on-variant leading-relaxed">
-                Veteran organizations, nonprofits, and volunteer coordinators who need a single place to plan and manage missions.
-              </p>
+              {[
+                { icon: "schedule", title: "80% less admin time", desc: "Organizations cut administrative overhead by up to 80%, freeing teams to spend more time on the missions that matter to veterans." },
+                { icon: "groups", title: "Coordinate volunteers effortlessly", desc: "Match the right volunteers to the right missions based on skills, location, and availability - automatically." },
+                { icon: "visibility", title: "Full mission visibility", desc: "Track every mission from planning to completion with real-time dashboards and progress reporting." },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-lg px-3 py-2.5 border-l-2 border-amber-500 bg-amber-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-amber-600 shrink-0 mt-px">{item.icon}</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-sm font-semibold text-surface-on">{item.title}</span>
+                    <span className="text-sm text-surface-on-variant leading-relaxed">{item.desc}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ),
       },
       {
-        id: "moh-feature",
-        label: "Feature",
+        id: "moh-pain",
+        label: "Pain",
         content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">hub</span>
-              <span className="text-sm font-semibold text-surface-on">Mission coordination hub</span>
-            </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              Centralized dashboards for mission planning, volunteer matching, resource allocation, and real-time progress tracking - all in one secure workspace.
+          <div className="flex flex-col gap-5">
+            <p className="text-base font-medium text-surface-on leading-snug">
+              Veteran organizations juggle spreadsheets, group chats, and disconnected tools to coordinate missions.
+              <span className="text-red-600 font-semibold"> They lose volunteers and momentum.</span>
             </p>
+
+            <div className="flex flex-col gap-1.5">
+              {[
+                { icon: "scatter_plot", text: "Mission details scattered across emails and spreadsheets" },
+                { icon: "person_search", text: "No way to match volunteers to the right missions" },
+                { icon: "visibility_off", text: "Zero visibility into mission progress" },
+                { icon: "sync_problem", text: "Manual coordination that doesn't scale" },
+                { icon: "group_off", text: "Volunteer drop-off from disorganization" },
+              ].map((item) => (
+                <div
+                  key={item.text}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-red-500 bg-red-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-red-600 shrink-0">{item.icon}</span>
+                  <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-xl bg-red-600 px-4 py-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-lg text-white">trending_down</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Business Impact</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                {[
+                  "Missed missions and deadlines",
+                  "Volunteer burnout and drop-off",
+                  "Wasted resources and donations",
+                  "Poor accountability and reporting",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/70 shrink-0" />
+                    <span className="text-sm font-medium text-white/95">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         ),
       },
-{
+      {
+        id: "moh-solution",
+        label: "Solution",
+        content: (
+          <div className="flex flex-col gap-5">
+            <p className="text-base font-medium text-surface-on leading-snug">
+              In response we built a purpose-built collaboration platform that centralizes mission coordination, volunteer management, and impact tracking in one secure workspace.
+            </p>
+
+            <div className="flex flex-col gap-1.5">
+              {[
+                { icon: "diversity_3", text: "Purpose-built for veteran organizations and nonprofits" },
+                { icon: "hub", text: "Centralized mission planning, coordination, and tracking" },
+                { icon: "group_add", text: "Smart volunteer matching based on skills and availability" },
+                { icon: "monitoring", text: "Real-time dashboards and impact reporting" },
+              ].map((item) => (
+                <div
+                  key={item.text}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-amber-500 bg-amber-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-amber-600 shrink-0">{item.icon}</span>
+                  <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ),
+      },
+      {
         id: "moh-demo",
         label: "Demo",
         content: (
@@ -623,37 +672,117 @@ const products: Product[] = [
         id: "gcc-outcome",
         label: "Business Outcome",
         content: (
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg text-surface-on">visibility</span>
-                <span className="text-sm font-semibold text-surface-on">Full funnel visibility and control</span>
+          <div className="flex flex-col gap-5">
+            <div className="rounded-xl bg-amber-600 px-4 py-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-lg text-white">group</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Who is it for</span>
               </div>
-              <p className="text-sm text-surface-on-variant leading-relaxed">
-                Replace disconnected CRMs and manual tracking with a single dashboard. Monitor lead status, campaign performance, and sales KPIs in real time - so you can optimize what you can actually see.
-              </p>
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-semibold uppercase tracking-wider text-surface-on-variant/70">Who is it for</span>
-              <p className="text-sm text-surface-on-variant leading-relaxed">
+              <p className="text-base font-medium text-white/95 leading-snug">
                 Sales managers and business owners who need full pipeline visibility and campaign control in one place.
               </p>
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              {[
+                { icon: "visibility", title: "Full funnel visibility and control", desc: "Replace disconnected CRMs and manual tracking with a single dashboard. Monitor lead status, campaign performance, and sales KPIs in real time." },
+                { icon: "campaign", title: "Launch campaigns from WhatsApp", desc: "Run outbound WhatsApp campaigns with templates, scheduling, and tracking - no separate tool needed." },
+                { icon: "inventory_2", title: "Manage products in one place", desc: "Keep your product catalog up to date so Gini can reference it in every conversation with leads." },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-lg px-3 py-2.5 border-l-2 border-amber-500 bg-amber-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-amber-600 shrink-0 mt-px">{item.icon}</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-sm font-semibold text-surface-on">{item.title}</span>
+                    <span className="text-sm text-surface-on-variant leading-relaxed">{item.desc}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ),
       },
       {
-        id: "gcc-feature",
-        label: "Features",
+        id: "gcc-pain",
+        label: "Pain",
         content: (
-          <FeatureSectionWithHover
-            features={commandCenterFeatures}
-            accentColor="bg-amber-500"
-            hoverGradient="from-amber-100 dark:from-amber-900/30"
-          />
+          <div className="flex flex-col gap-5">
+            <p className="text-base font-medium text-surface-on leading-snug">
+              Sales teams use disconnected tools - one for leads, one for campaigns, one for reporting.
+              <span className="text-red-600 font-semibold"> They fly blind.</span>
+            </p>
+
+            <div className="flex flex-col gap-1.5">
+              {[
+                { icon: "visibility_off", text: "No real-time visibility into pipeline health" },
+                { icon: "device_hub", text: "Scattered tools that don't talk to each other" },
+                { icon: "edit_note", text: "Manual reporting that's always outdated" },
+                { icon: "person_off", text: "Customer data spread across spreadsheets" },
+                { icon: "trending_down", text: "No way to track campaign ROI" },
+              ].map((item) => (
+                <div
+                  key={item.text}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-red-500 bg-red-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-red-600 shrink-0">{item.icon}</span>
+                  <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-xl bg-red-600 px-4 py-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-lg text-white">trending_down</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Business Impact</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                {[
+                  "Lost deals from blind spots",
+                  "Wasted ad spend without tracking",
+                  "Decisions based on gut, not data",
+                  "Inconsistent follow-ups",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/70 shrink-0" />
+                    <span className="text-sm font-medium text-white/95">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         ),
       },
-{
+      {
+        id: "gcc-solution",
+        label: "Solution",
+        content: (
+          <div className="flex flex-col gap-5">
+            <p className="text-base font-medium text-surface-on leading-snug">
+              In response we built an AI-driven CRM on WhatsApp that gives your team full pipeline visibility, campaign control, and product management - all from one conversational interface.
+            </p>
+
+            <div className="flex flex-col gap-1.5">
+              {[
+                { icon: "hub", text: "Unified CRM built natively on WhatsApp" },
+                { icon: "chat", text: "Manage leads, campaigns, and products via conversation" },
+                { icon: "monitoring", text: "Real-time KPI dashboards and pipeline tracking" },
+                { icon: "smart_toy", text: "Powered by AI - connected to Gini for seamless automation" },
+              ].map((item) => (
+                <div
+                  key={item.text}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-amber-500 bg-amber-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-amber-600 shrink-0">{item.icon}</span>
+                  <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ),
+      },
+      {
         id: "gcc-demo",
         label: "Demo",
         content: (
