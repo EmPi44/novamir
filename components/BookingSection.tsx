@@ -38,7 +38,7 @@ export const BookingSection: React.FC = () => {
               width: '100%',
               height: '100%',
               overflow: 'scroll',
-              minHeight: '500px',
+              minHeight: 'clamp(350px, 70vh, 500px)',
             }}
             config={{
               layout: 'month_view',

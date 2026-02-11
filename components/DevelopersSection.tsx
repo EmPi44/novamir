@@ -57,7 +57,7 @@ export const DevelopersSection: React.FC = () => {
         style={{ scrollPaddingInline: '2rem' }}
       >
         {cases.map((item, idx) => (
-          <div key={idx} className="flex-none w-[85vw] md:w-[60vw] snap-start group">
+          <div key={idx} className="flex-none w-[85vw] sm:w-[75vw] md:w-[60vw] snap-start group">
             <figure className="relative aspect-[16/9] rounded-[2rem] overflow-hidden mb-6">
               <img src={item.img} alt={item.role} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

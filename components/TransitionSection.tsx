@@ -39,10 +39,10 @@ export const TransitionSection: React.FC = () => {
     { text: "Peace of mind", icon: "verified" },
   ];
 
-  // Trigger badges animation after small delay when headline completes
+  // Trigger badges animation after strikethrough effect completes
   useEffect(() => {
     if (headlineComplete) {
-      const timer = setTimeout(() => setBadgesComplete(true), 300);
+      const timer = setTimeout(() => setBadgesComplete(true), 1200);
       return () => clearTimeout(timer);
     }
   }, [headlineComplete]);
@@ -53,7 +53,12 @@ export const TransitionSection: React.FC = () => {
       <section className="py-20 md:py-32 bg-surface">
         <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-10">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-surface-on leading-tight tracking-tight">
-            Stop doing admin,<br />Start growing your business.
+            <span className="relative inline-block opacity-35">
+              Stop doing admin,
+              <span className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] md:h-[3px] bg-surface-on rounded-full" />
+            </span>
+            <br />
+            <span className="font-bold">Start</span> growing your business.
           </h2>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {keywords.map((keyword) => (
@@ -100,15 +105,35 @@ export const TransitionSection: React.FC = () => {
         ref={ref}
         className="max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-10"
       >
-        {/* Main headline with typewriter effect */}
+        {/* Main headline with typewriter → strikethrough effect */}
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-surface-on leading-tight tracking-tight min-h-[2.4em] whitespace-pre-line">
-          {isInView && (
+          {isInView && !headlineComplete && (
             <Typewriter
               text={"Stop doing admin,\nStart growing your business."}
               speed={35}
               cursor="|"
               onComplete={() => setHeadlineComplete(true)}
             />
+          )}
+          {headlineComplete && (
+            <>
+              <motion.span
+                className="relative inline-block"
+                animate={{ opacity: 0.35 }}
+                initial={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                Stop doing admin,
+                <motion.span
+                  className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] md:h-[3px] bg-surface-on rounded-full origin-left"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 }}
+                />
+              </motion.span>
+              <br />
+              <span className="font-bold">Start</span>{' growing your business.'}
+            </>
           )}
         </h2>
 

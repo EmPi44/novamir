@@ -22,7 +22,7 @@ import {
 } from '@tabler/icons-react';
 import giniImg from '../assets/gini.png';
 import henryImg from '../assets/henry.png';
-import mohImg from '../assets/moh.png';
+import atlasImg from '../assets/atlas.png';
 import gccImg from '../assets/gcc.png';
 
 // Gini Hard Skills
@@ -517,17 +517,17 @@ const products: Product[] = [
     ],
   },
   {
-    title: "Missions of Honor Platform",
+    title: "Atlas",
     subtitle: "Operations Management Platform",
     desc: "A centralized operations platform for organizations that coordinate people, assignments, schedules, and communication — replacing spreadsheet chaos with operational clarity.",
-    img: mohImg,
-    icon: "diversity_3",
+    img: atlasImg,
+    icon: "hub",
     transparent: true,
     glowColor: "bg-amber-500/50",
     imgMaxWidth: "max-w-2xl",
     tabs: [
       {
-        id: "moh-outcome",
+        id: "atlas-outcome",
         label: "Business Outcome",
         content: (
           <div className="flex flex-col gap-5">
@@ -564,7 +564,7 @@ const products: Product[] = [
         ),
       },
       {
-        id: "moh-pain",
+        id: "atlas-pain",
         label: "Pain",
         content: (
           <div className="flex flex-col gap-5">
@@ -614,7 +614,7 @@ const products: Product[] = [
         ),
       },
       {
-        id: "moh-solution",
+        id: "atlas-solution",
         label: "Solution",
         content: (
           <div className="flex flex-col gap-5">
@@ -626,6 +626,7 @@ const products: Product[] = [
                 { icon: "sms", title: "Integrated communication layer", desc: "Centralized messaging with templates, history, and automation - tied directly to operational records." },
                 { icon: "bar_chart", title: "Real-time dashboards and reporting", desc: "Track workload, bottlenecks, completion rates, and resource allocation instantly." },
                 { icon: "lock", title: "Roles, permissions, and audit trail", desc: "Control access by role and maintain full transparency over changes and actions." },
+                { icon: "description", title: "Full process documentation", desc: "Every workflow, procedure, and decision is documented in one place - a single source of truth the entire team can reference." },
               ].map((item) => (
                 <div
                   key={item.title}
@@ -643,7 +644,7 @@ const products: Product[] = [
         ),
       },
       {
-        id: "moh-demo",
+        id: "atlas-demo",
         label: "Demo",
         content: (
           <div className="flex flex-col items-center gap-4 py-6">
