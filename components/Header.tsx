@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Logo } from './Logo';
 
 const navItems = [
@@ -9,15 +9,36 @@ const navItems = [
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentY = window.scrollY;
+      setIsScrolled(currentY > 50);
+
+      if (isMenuOpen) {
+        lastScrollY.current = currentY;
+        return;
+      }
+
+      // Always show at top
+      if (currentY < 50) {
+        setIsVisible(true);
+      } else if (currentY > lastScrollY.current + 5) {
+        // Scrolling down — hide
+        setIsVisible(false);
+      } else if (currentY < lastScrollY.current - 5) {
+        // Scrolling up — show
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentY;
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -57,8 +78,8 @@ export const Header: React.FC = () => {
         </nav>
       </div>
 
-      <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
-        <header className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isVisible || isMenuOpen ? 'translate-y-0' : '-translate-y-full'} ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+        <header className="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 sm:py-4 flex items-center justify-between">
           <a href="/" className="flex-shrink-0 relative text-surface-on" aria-label="Novamir - Home">
             <Logo className="h-6 w-auto" />
           </a>
