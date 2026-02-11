@@ -18,6 +18,11 @@ import {
   IconUsers,
   IconSpeakerphone,
   IconPackage,
+  IconHeadset,
+  IconBook,
+  IconClipboardCheck,
+  IconMoodSmile,
+  IconBrain,
 } from '@tabler/icons-react';
 import giniImg from '../assets/gini.png';
 import henryImg from '../assets/henry.png';
@@ -28,7 +33,7 @@ import gccImg from '../assets/gcc.png';
 const giniHardSkills: SkillFeature[] = [
   {
     title: "Lead Qualification",
-    description: "Qualifies leads based on criteria aligned with your business - balancing less friction for more lead flow or more friction for higher-quality leads. The right strategy at the right moment.",
+    description: "Scores leads based on your criteria - more flow or more quality. The right strategy at the right moment.",
     icon: <IconTargetArrow className="w-5 h-5" />,
   },
   {
@@ -43,7 +48,7 @@ const giniHardSkills: SkillFeature[] = [
   },
   {
     title: "Knowledge Base Q&A",
-    description: "Gini gets all the relevant information about your company and products to have the knowledge to manage leads effectively.",
+    description: "Learns your company and products to answer leads with full context.",
     icon: <IconMessageQuestion className="w-5 h-5" />,
   },
   {
@@ -83,6 +88,69 @@ const giniSoftSkills: SkillFeature[] = [
   {
     title: "Scales with your needs",
     description: "Handles 10 or 10,000 conversations without quality degradation.",
+    icon: <IconTrendingUp className="w-5 h-5" />,
+  },
+];
+
+// Henry Hard Skills
+const henryHardSkills: SkillFeature[] = [
+  {
+    title: "Inquiry Resolution",
+    description: "Resolves common customer questions instantly without human involvement.",
+    icon: <IconHeadset className="w-5 h-5" />,
+  },
+  {
+    title: "Knowledge Base",
+    description: "Answers from your docs, FAQs, and policies with accuracy.",
+    icon: <IconBook className="w-5 h-5" />,
+  },
+  {
+    title: "Ticket Management",
+    description: "Creates, tracks, and closes support tickets automatically.",
+    icon: <IconClipboardCheck className="w-5 h-5" />,
+  },
+  {
+    title: "Meeting Scheduling",
+    description: "Books callbacks or follow-up meetings on your team's calendar.",
+    icon: <IconCalendarEvent className="w-5 h-5" />,
+  },
+  {
+    title: "Team Notification",
+    description: "Alerts your team when a customer needs immediate human attention.",
+    icon: <IconBellRinging className="w-5 h-5" />,
+  },
+];
+
+// Henry Soft Skills
+const henrySoftSkills: SkillFeature[] = [
+  {
+    title: "Natural Voice",
+    description: "Speaks with a natural, human-like tone customers feel comfortable with.",
+    icon: <IconMoodSmile className="w-5 h-5" />,
+  },
+  {
+    title: "Instant Response",
+    description: "Picks up every call in seconds, 24/7 - no hold music, no waiting.",
+    icon: <IconBolt className="w-5 h-5" />,
+  },
+  {
+    title: "Multi-Lingual",
+    description: "Communicates fluently in 50+ languages to serve any customer.",
+    icon: <IconLanguage className="w-5 h-5" />,
+  },
+  {
+    title: "Context Awareness",
+    description: "Remembers past interactions, order history, and customer preferences.",
+    icon: <IconBrain className="w-5 h-5" />,
+  },
+  {
+    title: "Patient & Consistent",
+    description: "Never gets frustrated - delivers the same quality on every call.",
+    icon: <IconUserHeart className="w-5 h-5" />,
+  },
+  {
+    title: "Scales with Demand",
+    description: "Handles 10 or 10,000 calls without wait times or quality loss.",
     icon: <IconTrendingUp className="w-5 h-5" />,
   },
 ];
@@ -166,6 +234,55 @@ const products: Product[] = [
         ),
       },
       {
+        id: "gini-pain",
+        label: "Pain",
+        content: (
+          <div className="flex flex-col gap-5">
+            <p className="text-base font-medium text-surface-on leading-snug">
+              Sales teams drown in admin work - slow follow-ups, unqualified leads, zero visibility.
+              <span className="text-red-600 font-semibold"> They lose sales.</span>
+            </p>
+
+            <div className="flex flex-col gap-1.5">
+              {[
+                { icon: "timer_off", text: "Lost leads from slow follow-ups" },
+                { icon: "person_search", text: "Chasing unqualified leads" },
+                { icon: "chat_bubble", text: "Answering repetitive questions" },
+                { icon: "visibility_off", text: "No visibility into the sales funnel" },
+              ].map((item) => (
+                <div
+                  key={item.text}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-red-500 bg-red-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-red-600 shrink-0">{item.icon}</span>
+                  <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-xl bg-red-600 px-4 py-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-lg text-white">trending_down</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Business Impact</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                {[
+                  "Losing customers",
+                  "Burning marketing budget",
+                  "No time for closing deals",
+                  "Wasting money on unused CRMs",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/70 shrink-0" />
+                    <span className="text-sm font-medium text-white/95">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ),
+      },
+      {
         id: "gini-feature",
         label: "Skills",
         content: (
@@ -200,22 +317,7 @@ const products: Product[] = [
           />
         ),
       },
-      {
-        id: "gini-case",
-        label: "Case Study",
-        content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">SaaS Series A - 147% pipeline growth</span>
-            </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              A B2B SaaS startup deployed Gini to replace manual SDR outreach. Within 60 days they booked 3x more demos while cutting outbound costs by half.
-            </p>
-          </div>
-        ),
-      },
-      {
+{
         id: "gini-demo",
         label: "Demo",
         content: (
@@ -267,35 +369,40 @@ const products: Product[] = [
       },
       {
         id: "henry-feature",
-        label: "Feature",
+        label: "Skills",
         content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">psychology</span>
-              <span className="text-sm font-semibold text-surface-on">Context-aware conversations</span>
-            </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              Henry remembers past interactions, reads order history, and understands nuanced questions. Intelligent escalation routes complex issues to the right human agent with full context.
-            </p>
-          </div>
+          <AnimatedTabs
+            layoutId="henry-skills-subtabs"
+            defaultTab="hard-skills"
+            className="max-w-full"
+            tabs={[
+              {
+                id: "hard-skills",
+                label: "Hard Skills",
+                content: (
+                  <FeatureSectionWithHover
+                    features={henryHardSkills}
+                    accentColor="bg-blue-500"
+                    hoverGradient="from-blue-100 dark:from-blue-900/30"
+                  />
+                ),
+              },
+              {
+                id: "soft-skills",
+                label: "Soft Skills",
+                content: (
+                  <FeatureSectionWithHover
+                    features={henrySoftSkills}
+                    accentColor="bg-blue-500"
+                    hoverGradient="from-blue-100 dark:from-blue-900/30"
+                  />
+                ),
+              },
+            ]}
+          />
         ),
       },
-      {
-        id: "henry-case",
-        label: "Case Study",
-        content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">E-commerce brand - 70% ticket deflection</span>
-            </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              A DTC brand with 50K+ monthly support tickets deployed Henry and deflected 70% of volume within the first month, saving $120K annually in support costs.
-            </p>
-          </div>
-        ),
-      },
-      {
+{
         id: "henry-demo",
         label: "Demo",
         content: (
@@ -361,22 +468,7 @@ const products: Product[] = [
           </div>
         ),
       },
-      {
-        id: "moh-case",
-        label: "Case Study",
-        content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">E-veterans org - first missions launched</span>
-            </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              A veterans organization started managing their first missions, switching from paper notes and friction-filled databases to the new platform.
-            </p>
-          </div>
-        ),
-      },
-      {
+{
         id: "moh-demo",
         label: "Demo",
         content: (
@@ -438,22 +530,7 @@ const products: Product[] = [
           />
         ),
       },
-      {
-        id: "gcc-case",
-        label: "Case Study",
-        content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">Real estate agency - from chaos to clarity</span>
-            </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              A real estate agency replaced their outdated CRM and manual follow-ups with Gini Command Center. Leads are now tracked, campaigns managed, and agents notified - all through one platform their team actually adopted.
-            </p>
-          </div>
-        ),
-      },
-      {
+{
         id: "gcc-demo",
         label: "Demo",
         content: (
