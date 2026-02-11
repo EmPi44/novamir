@@ -205,30 +205,33 @@ const products: Product[] = [
         id: "gini-outcome",
         label: "Business Outcome",
         content: (
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg text-surface-on">schedule</span>
-                <span className="text-sm font-semibold text-surface-on">Save 10-15 admin hours per week</span>
+          <div className="flex flex-col gap-5">
+            <div className="rounded-xl bg-emerald-600 px-4 py-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-lg text-white">group</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Who is it for</span>
               </div>
-              <p className="text-sm text-surface-on-variant leading-relaxed">
-                Gini saves your team 10-15 hours of admin work every week - time and energy that can be used to grow the business.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg text-surface-on">bolt</span>
-                <span className="text-sm font-semibold text-surface-on">Respond in seconds, not hours</span>
-              </div>
-              <p className="text-sm text-surface-on-variant leading-relaxed">
-                Gini responds in seconds so your brand image stays strong and you never lose a customer to a competitor due to slow response times and inconsistent follow-ups.
-              </p>
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-semibold uppercase tracking-wider text-surface-on-variant/70">Who is it for</span>
-              <p className="text-sm text-surface-on-variant leading-relaxed">
+              <p className="text-base font-medium text-white/95 leading-snug">
                 Teams that want to fix lead qualification and nurturing to only speak to qualified leads - and focus on increasing sales, not admin.
               </p>
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              {[
+                { icon: "schedule", title: "Save 10-15 admin hours per week", desc: "Gini saves every team member 10-15 hours of admin work per week - time they can spend selling instead." },
+                { icon: "bolt", title: "Respond in seconds, not hours", desc: "Gini responds in seconds so your brand image stays strong and you never lose a customer to a competitor due to slow response times and inconsistent follow-ups." },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-lg px-3 py-2.5 border-l-2 border-emerald-500 bg-emerald-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-emerald-600 shrink-0 mt-px">{item.icon}</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-sm font-semibold text-surface-on">{item.title}</span>
+                    <span className="text-sm text-surface-on-variant leading-relaxed">{item.desc}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ),
@@ -249,6 +252,7 @@ const products: Product[] = [
                 { icon: "person_search", text: "Chasing unqualified leads" },
                 { icon: "chat_bubble", text: "Answering repetitive questions" },
                 { icon: "visibility_off", text: "No visibility into the sales funnel" },
+                { icon: "sync_problem", text: "CRM data outdated and inconsistent" },
               ].map((item) => (
                 <div
                   key={item.text}
@@ -283,41 +287,69 @@ const products: Product[] = [
         ),
       },
       {
-        id: "gini-feature",
-        label: "Skills",
+        id: "gini-solution",
+        label: "Solution",
         content: (
-          <AnimatedTabs
-            layoutId="gini-skills-subtabs"
-            defaultTab="hard-skills"
-            className="max-w-full"
-            tabs={[
-              {
-                id: "hard-skills",
-                label: "Hard Skills",
-                content: (
-                  <FeatureSectionWithHover
-                    features={giniHardSkills}
-                    accentColor="bg-emerald-500"
-                    hoverGradient="from-emerald-100 dark:from-emerald-900/30"
-                  />
-                ),
-              },
-              {
-                id: "soft-skills",
-                label: "Soft Skills",
-                content: (
-                  <FeatureSectionWithHover
-                    features={giniSoftSkills}
-                    accentColor="bg-emerald-500"
-                    hoverGradient="from-emerald-100 dark:from-emerald-900/30"
-                  />
-                ),
-              },
-            ]}
-          />
+          <div className="flex flex-col gap-5">
+            <p className="text-base font-medium text-surface-on leading-snug">
+              In response we built a multi-agent AI system designed to handle lead communication and CRM tasks at scale.
+            </p>
+
+            <AnimatedTabs
+              layoutId="gini-skills-subtabs"
+              defaultTab="gini-overview"
+              className="max-w-full"
+              tabs={[
+                {
+                  id: "gini-overview",
+                  label: "Gini",
+                  content: (
+                    <div className="flex flex-col gap-1.5">
+                      {[
+                        { icon: "smart_toy", text: "Conversational multi-agent AI for lead engagement" },
+                        { icon: "contact_page", text: "Manage CRM automatically and via conversation with the AI" },
+                        { icon: "chat", text: "Seamless integration on WhatsApp" },
+                        { icon: "hub", text: "Connected to lead sources (property platforms, ads, website)" },
+                      ].map((item) => (
+                        <div
+                          key={item.text}
+                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-emerald-500 bg-emerald-50/60"
+                        >
+                          <span className="material-symbols-outlined text-xl text-emerald-600 shrink-0">{item.icon}</span>
+                          <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ),
+                },
+                {
+                  id: "hard-skills",
+                  label: "Hard Skills",
+                  content: (
+                    <FeatureSectionWithHover
+                      features={giniHardSkills}
+                      accentColor="bg-emerald-500"
+                      hoverGradient="from-emerald-100 dark:from-emerald-900/30"
+                    />
+                  ),
+                },
+                {
+                  id: "soft-skills",
+                  label: "Soft Skills",
+                  content: (
+                    <FeatureSectionWithHover
+                      features={giniSoftSkills}
+                      accentColor="bg-emerald-500"
+                      hoverGradient="from-emerald-100 dark:from-emerald-900/30"
+                    />
+                  ),
+                },
+              ]}
+            />
+          </div>
         ),
       },
-{
+      {
         id: "gini-demo",
         label: "Demo",
         content: (
@@ -338,7 +370,7 @@ const products: Product[] = [
   {
     title: "Henry",
     subtitle: "AI Customer Service - Voice Agent",
-    desc: "Intelligent customer service that understands context, resolves inquiries instantly, and escalates only when it matters. Always on, always helpful.",
+    desc: "Your 24/7 customer service on the phone that understands context, resolves inquiries instantly, and escalates only when it matters.",
     img: henryImg,
     icon: "support_agent",
     transparent: true,
@@ -348,61 +380,152 @@ const products: Product[] = [
         id: "henry-outcome",
         label: "Business Outcome",
         content: (
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg text-surface-on">schedule</span>
-                <span className="text-sm font-semibold text-surface-on">85% faster resolution times</span>
+          <div className="flex flex-col gap-5">
+            <div className="rounded-xl bg-blue-600 px-4 py-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-lg text-white">group</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Who is it for</span>
               </div>
-              <p className="text-sm text-surface-on-variant leading-relaxed">
-                Henry resolves most inquiries instantly, reducing average handle time from 12 minutes to under 2 - while lifting customer satisfaction scores by 40%.
+              <p className="text-base font-medium text-white/95 leading-snug">
+                Customer support teams handling high ticket volumes that need instant, always-on resolution.
               </p>
             </div>
+
             <div className="flex flex-col gap-1.5">
-              <span className="text-xs font-semibold uppercase tracking-wider text-surface-on-variant/70">Who is it for</span>
-              <p className="text-sm text-surface-on-variant leading-relaxed">
-                Customer support teams and e-commerce brands handling high ticket volumes that need instant, always-on resolution.
-              </p>
+              {[
+                { icon: "smart_toy", title: "Handles 85%+ of inquiries autonomously", desc: "Henry resolves the vast majority of customer inquiries without human involvement - your team only steps in when it truly matters." },
+                { icon: "schedule", title: "85% faster resolution times", desc: "Average handle time drops from 12 minutes to under 2 - while clearly shifting reviews from 1-2 star ratings to 4-5." },
+                { icon: "savings", title: "Cut support costs significantly", desc: "Deflect the majority of routine tickets automatically - smaller team needed, same quality, lower costs." },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-lg px-3 py-2.5 border-l-2 border-blue-500 bg-blue-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-blue-600 shrink-0 mt-px">{item.icon}</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-sm font-semibold text-surface-on">{item.title}</span>
+                    <span className="text-sm text-surface-on-variant leading-relaxed">{item.desc}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ),
       },
       {
-        id: "henry-feature",
-        label: "Skills",
+        id: "henry-pain",
+        label: "Pain",
         content: (
-          <AnimatedTabs
-            layoutId="henry-skills-subtabs"
-            defaultTab="hard-skills"
-            className="max-w-full"
-            tabs={[
-              {
-                id: "hard-skills",
-                label: "Hard Skills",
-                content: (
-                  <FeatureSectionWithHover
-                    features={henryHardSkills}
-                    accentColor="bg-blue-500"
-                    hoverGradient="from-blue-100 dark:from-blue-900/30"
-                  />
-                ),
-              },
-              {
-                id: "soft-skills",
-                label: "Soft Skills",
-                content: (
-                  <FeatureSectionWithHover
-                    features={henrySoftSkills}
-                    accentColor="bg-blue-500"
-                    hoverGradient="from-blue-100 dark:from-blue-900/30"
-                  />
-                ),
-              },
-            ]}
-          />
+          <div className="flex flex-col gap-5">
+            <p className="text-base font-medium text-surface-on leading-snug">
+              Support teams are overwhelmed - long wait times, repetitive tickets, inconsistent answers.
+              <span className="text-red-600 font-semibold"> They lose customers.</span>
+            </p>
+
+            <div className="flex flex-col gap-1.5">
+              {[
+                { icon: "hourglass_top", text: "Customers waiting on hold for minutes" },
+                { icon: "repeat", text: "Team answering the same questions over and over" },
+                { icon: "trending_up", text: "Ticket volumes growing faster than headcount" },
+                { icon: "language", text: "No multilingual support for global customers" },
+                { icon: "nightlight", text: "No coverage outside business hours" },
+              ].map((item) => (
+                <div
+                  key={item.text}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-red-500 bg-red-50/60"
+                >
+                  <span className="material-symbols-outlined text-xl text-red-600 shrink-0">{item.icon}</span>
+                  <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-xl bg-red-600 px-4 py-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="material-symbols-outlined text-lg text-white">trending_down</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Business Impact</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                {[
+                  "Losing customers to bad experiences",
+                  "Rising support costs",
+                  "Team burnout and high turnover",
+                  "Negative reviews and brand damage",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/70 shrink-0" />
+                    <span className="text-sm font-medium text-white/95">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         ),
       },
-{
+      {
+        id: "henry-solution",
+        label: "Solution",
+        content: (
+          <div className="flex flex-col gap-5">
+            <p className="text-base font-medium text-surface-on leading-snug">
+              In response we built an AI voice agent that resolves customer inquiries instantly - with natural conversation, full context, and 24/7 availability.
+            </p>
+
+            <AnimatedTabs
+              layoutId="henry-skills-subtabs"
+              defaultTab="henry-overview"
+              className="max-w-full"
+              tabs={[
+                {
+                  id: "henry-overview",
+                  label: "Henry",
+                  content: (
+                    <div className="flex flex-col gap-1.5">
+                      {[
+                        { icon: "record_voice_over", text: "Natural voice AI that customers feel comfortable with" },
+                        { icon: "support_agent", text: "Instant resolution for common inquiries without human involvement" },
+                        { icon: "language", text: "Fluent in 50+ languages for global customer support" },
+                        { icon: "schedule", text: "Always on - 24/7 coverage with zero wait times" },
+                      ].map((item) => (
+                        <div
+                          key={item.text}
+                          className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-blue-500 bg-blue-50/60"
+                        >
+                          <span className="material-symbols-outlined text-xl text-blue-600 shrink-0">{item.icon}</span>
+                          <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ),
+                },
+                {
+                  id: "hard-skills",
+                  label: "Hard Skills",
+                  content: (
+                    <FeatureSectionWithHover
+                      features={henryHardSkills}
+                      accentColor="bg-blue-500"
+                      hoverGradient="from-blue-100 dark:from-blue-900/30"
+                    />
+                  ),
+                },
+                {
+                  id: "soft-skills",
+                  label: "Soft Skills",
+                  content: (
+                    <FeatureSectionWithHover
+                      features={henrySoftSkills}
+                      accentColor="bg-blue-500"
+                      hoverGradient="from-blue-100 dark:from-blue-900/30"
+                    />
+                  ),
+                },
+              ]}
+            />
+          </div>
+        ),
+      },
+      {
         id: "henry-demo",
         label: "Demo",
         content: (
@@ -413,7 +536,7 @@ const products: Product[] = [
               className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
             >
               <span className="material-symbols-outlined text-lg">calendar_month</span>
-              Let's Talk — Book a Demo
+              Let's Talk - Book a Demo
             </a>
           </div>
         ),
