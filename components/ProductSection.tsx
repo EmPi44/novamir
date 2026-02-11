@@ -333,7 +333,7 @@ const products: Product[] = [
               className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
             >
               <span className="material-symbols-outlined text-lg">calendar_month</span>
-              Let's Talk — Book a Demo
+              Let's Talk - Book a Demo
             </a>
           </div>
         ),
@@ -519,7 +519,7 @@ const products: Product[] = [
   {
     title: "Atlas",
     subtitle: "Operations Management Platform",
-    desc: "A centralized operations platform for organizations that coordinate people, assignments, schedules, and communication — replacing spreadsheet chaos with operational clarity.",
+    desc: "A centralized operations platform for organizations that coordinate people, assignments, schedules, and communication - replacing spreadsheet chaos with operational clarity.",
     img: atlasImg,
     icon: "hub",
     transparent: true,
@@ -654,7 +654,7 @@ const products: Product[] = [
               className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
             >
               <span className="material-symbols-outlined text-lg">calendar_month</span>
-              Let's Talk — Book a Demo
+              Let's Talk - Book a Demo
             </a>
           </div>
         ),
@@ -796,7 +796,7 @@ const products: Product[] = [
               className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
             >
               <span className="material-symbols-outlined text-lg">calendar_month</span>
-              Let's Talk — Book a Demo
+              Let's Talk - Book a Demo
             </a>
           </div>
         ),
