@@ -69,6 +69,26 @@ export const TransitionSection: React.FC = () => {
           <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-surface-on tracking-tight">
             Here's how this looks in practice.
           </p>
+          {/* Scroll hint arrows - stacked chevrons - static */}
+          <div className="flex flex-col items-center pt-6" aria-hidden="true">
+            {[0.7, 0.45, 0.22].map((opacity, i) => (
+              <svg
+                key={i}
+                width="60"
+                height="24"
+                viewBox="0 0 60 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-surface-on"
+                style={{ opacity, marginTop: i > 0 ? '-6px' : 0 }}
+              >
+                <path d="M8 8l22 10 22-10" />
+              </svg>
+            ))}
+          </div>
         </div>
       </section>
     );
@@ -118,6 +138,46 @@ export const TransitionSection: React.FC = () => {
         >
           Here's how this looks in practice.
         </motion.p>
+
+        {/* Scroll hint arrows - stacked chevrons */}
+        <motion.div
+          className="flex flex-col items-center pt-6"
+          initial={{ opacity: 0 }}
+          animate={
+            badgesComplete
+              ? { opacity: 1, y: [0, 10, 0] }
+              : { opacity: 0 }
+          }
+          transition={{
+            opacity: { duration: 0.5, ease: "easeOut", delay: 1.2 },
+            y: {
+              duration: 2,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "loop",
+              delay: 1.2,
+            },
+          }}
+          aria-hidden="true"
+        >
+          {[0.7, 0.45, 0.22].map((opacity, i) => (
+            <svg
+              key={i}
+              width="80"
+              height="28"
+              viewBox="0 0 80 28"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-surface-on"
+              style={{ opacity, marginTop: i > 0 ? '-8px' : 0 }}
+            >
+              <path d="M8 8l32 13 32-13" />
+            </svg>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
