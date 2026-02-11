@@ -69,6 +69,12 @@ export const TransitionSection: React.FC = () => {
           <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-surface-on tracking-tight">
             Here's how this looks in practice.
           </p>
+          {/* Scroll hint arrow - static */}
+          <div className="flex justify-center pt-6" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-surface-on/30">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </div>
         </div>
       </section>
     );
@@ -118,6 +124,32 @@ export const TransitionSection: React.FC = () => {
         >
           Here's how this looks in practice.
         </motion.p>
+
+        {/* Scroll hint arrow */}
+        <motion.div
+          className="flex justify-center pt-6"
+          initial={{ opacity: 0 }}
+          animate={
+            badgesComplete
+              ? { opacity: 1, y: [0, 8, 0] }
+              : { opacity: 0 }
+          }
+          transition={{
+            opacity: { duration: 0.5, ease: "easeOut", delay: 1.2 },
+            y: {
+              duration: 2,
+              ease: "easeInOut",
+              repeat: Infinity,
+              repeatType: "loop",
+              delay: 1.2,
+            },
+          }}
+          aria-hidden="true"
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-surface-on/30">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </motion.div>
       </div>
     </section>
   );

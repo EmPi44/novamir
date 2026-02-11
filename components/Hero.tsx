@@ -124,7 +124,7 @@ export const Hero: React.FC = () => {
       <div className="z-10 text-center px-4 max-w-5xl mx-auto space-y-8 animate-fade-in">
         <h1 className="flex justify-center mb-8">
             <span className="sr-only">Novamir - AI Systems That Reclaim Your Time</span>
-            <Logo className="h-12 w-auto md:h-16 text-primary" aria-hidden="true" />
+            <Logo className="h-12 w-auto md:h-16 text-primary selection:text-white" aria-hidden="true" />
         </h1>
 
         <p className="text-3xl md:text-5xl lg:text-5xl font-medium tracking-tight text-surface-on leading-[1.2]">

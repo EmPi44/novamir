@@ -28,7 +28,7 @@ import gccImg from '../assets/gcc.png';
 const giniHardSkills: SkillFeature[] = [
   {
     title: "Lead Qualification",
-    description: "Automatically scores and qualifies leads based on engagement and buying signals.",
+    description: "Qualifies leads based on criteria aligned with your business - balancing less friction for more lead flow or more friction for higher-quality leads. The right strategy at the right moment.",
     icon: <IconTargetArrow className="w-5 h-5" />,
   },
   {
@@ -43,12 +43,12 @@ const giniHardSkills: SkillFeature[] = [
   },
   {
     title: "Knowledge Base Q&A",
-    description: "Answers product questions instantly from your docs and FAQs.",
+    description: "Gini gets all the relevant information about your company and products to have the knowledge to manage leads effectively.",
     icon: <IconMessageQuestion className="w-5 h-5" />,
   },
   {
     title: "Team Notification",
-    description: "Alerts your sales team when high-value leads need human attention.",
+    description: "Alerts your sales team when a high-value lead is qualified and ready for a conversation.",
     icon: <IconBellRinging className="w-5 h-5" />,
   },
   {
@@ -62,7 +62,7 @@ const giniHardSkills: SkillFeature[] = [
 const giniSoftSkills: SkillFeature[] = [
   {
     title: "Instant Response",
-    description: "Responds within seconds, 24/7, so leads never wait.",
+    description: "Responds within seconds, 24/7, so you never lose leads to a competitor.",
     icon: <IconBolt className="w-5 h-5" />,
   },
   {
@@ -127,7 +127,7 @@ const products: Product[] = [
   {
     title: "Gini",
     subtitle: "AI Sales Assistant - WhatsApp",
-    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock - so your team can focus on closing.",
+    desc: "Your AI Sales Assistant on WhatsApp that handles the admin for your team around the clock - so your team can focus on selling.",
     img: giniImg,
     icon: "smart_toy",
     transparent: true,
@@ -140,17 +140,26 @@ const products: Product[] = [
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-lg text-surface-on">trending_up</span>
-                <span className="text-sm font-semibold text-surface-on">3x more qualified leads</span>
+                <span className="material-symbols-outlined text-lg text-surface-on">schedule</span>
+                <span className="text-sm font-semibold text-surface-on">Save 10-15 admin hours per week</span>
               </div>
               <p className="text-sm text-surface-on-variant leading-relaxed">
-                Companies using Gini see a 3x increase in qualified pipeline within the first 90 days, with 60% reduction in cost per lead.
+                Gini saves your team 10-15 hours of admin work every week - time and energy that can be used to grow the business.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg text-surface-on">bolt</span>
+                <span className="text-sm font-semibold text-surface-on">Respond in seconds, not hours</span>
+              </div>
+              <p className="text-sm text-surface-on-variant leading-relaxed">
+                Gini responds in seconds so your brand image stays strong and you never lose a customer to a competitor due to slow response times and inconsistent follow-ups.
               </p>
             </div>
             <div className="flex flex-col gap-1.5">
               <span className="text-xs font-semibold uppercase tracking-wider text-surface-on-variant/70">Who is it for</span>
               <p className="text-sm text-surface-on-variant leading-relaxed">
-                Sales teams, startups, and B2B companies looking to scale outreach and lead qualification without scaling headcount.
+                Teams that want to fix lead qualification and nurturing to only speak to qualified leads - and focus on increasing sales, not admin.
               </p>
             </div>
           </div>
