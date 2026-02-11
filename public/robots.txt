@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://novamir.com/sitemap.xml
+Sitemap: https://www.novamir.ai/sitemap.xml
