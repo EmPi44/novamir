@@ -125,7 +125,7 @@ const AnimatedTabs = ({
         ))}
       </div>
 
-      <div className="p-4 bg-surface-container text-surface-on rounded-xl border border-gray-100 min-h-[120px] h-full">
+      <div className="p-3 sm:p-4 bg-surface-container text-surface-on rounded-xl border border-gray-100 min-h-[120px] h-full">
         {tabs.map((tab) => (
           <div
             key={tab.id}
