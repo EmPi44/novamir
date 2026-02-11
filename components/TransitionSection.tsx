@@ -6,8 +6,10 @@ export const TransitionSection: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [headlineComplete, setHeadlineComplete] = useState(false);
-  const [badgesComplete, setBadgesComplete] = useState(false);
+
+  // Animation phases: type "Stop doing admin," → strikethrough → type "Start growing..." → badges → rest
+  type Phase = 'idle' | 'typing-stop' | 'strikethrough' | 'typing-start' | 'badges' | 'rest';
+  const [phase, setPhase] = useState<Phase>('idle');
 
   // Check for reduced motion preference
   useEffect(() => {
@@ -19,16 +21,40 @@ export const TransitionSection: React.FC = () => {
     return () => mediaQuery.removeEventListener('change', handler);
   }, []);
 
+  // Kick off the sequence when section scrolls into view
+  useEffect(() => {
+    if (isInView && phase === 'idle') {
+      setPhase('typing-stop');
+    }
+  }, [isInView, phase]);
+
+  // After strikethrough animation completes, start typing second line
+  useEffect(() => {
+    if (phase === 'strikethrough') {
+      const timer = setTimeout(() => setPhase('typing-start'), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [phase]);
+
+  // After badges are shown, reveal the rest
+  useEffect(() => {
+    if (phase === 'badges') {
+      // Wait for all 3 badges to animate in (0.3s initial + 2*0.35s stagger + 0.7s duration ≈ 1.7s) + breathing room
+      const timer = setTimeout(() => setPhase('rest'), 2200);
+      return () => clearTimeout(timer);
+    }
+  }, [phase]);
+
   const badgeVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 10 },
+    hidden: { opacity: 0, scale: 0.85, y: 16 },
     visible: (i: number) => ({
       opacity: 1,
       scale: 1,
       y: 0,
       transition: {
-        duration: 0.4,
+        duration: 0.7,
         ease: [0.25, 0.1, 0.25, 1],
-        delay: i * 0.15
+        delay: 0.3 + i * 0.35,
       },
     }),
   };
@@ -38,14 +64,6 @@ export const TransitionSection: React.FC = () => {
     { text: "Reduce manual work", icon: "auto_awesome" },
     { text: "Peace of mind", icon: "verified" },
   ];
-
-  // Trigger badges animation after strikethrough effect completes
-  useEffect(() => {
-    if (headlineComplete) {
-      const timer = setTimeout(() => setBadgesComplete(true), 1200);
-      return () => clearTimeout(timer);
-    }
-  }, [headlineComplete]);
 
   // Static version for reduced motion
   if (prefersReducedMotion) {
@@ -105,41 +123,60 @@ export const TransitionSection: React.FC = () => {
         ref={ref}
         className="max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-10"
       >
-        {/* Main headline with typewriter → strikethrough effect */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-surface-on leading-tight tracking-tight min-h-[2.4em] whitespace-pre-line">
-          {isInView && !headlineComplete && (
+        {/* Main headline — phased animation sequence */}
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-surface-on leading-tight tracking-tight min-h-[2.4em]">
+          {/* Phase 1: Type "Stop doing admin," */}
+          {phase === 'typing-stop' && (
             <Typewriter
-              text={"Stop doing admin,\nStart growing your business."}
-              speed={35}
+              text="Stop doing admin,"
+              speed={50}
               cursor="|"
-              onComplete={() => setHeadlineComplete(true)}
+              onComplete={() => setPhase('strikethrough')}
             />
           )}
-          {headlineComplete && (
+
+          {/* Phase 2+: Static "Stop doing admin," with strikethrough */}
+          {phase !== 'idle' && phase !== 'typing-stop' && (
             <>
               <motion.span
                 className="relative inline-block"
-                animate={{ opacity: 0.35 }}
                 initial={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
+                animate={{ opacity: 0.35 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
               >
                 Stop doing admin,
                 <motion.span
                   className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] md:h-[3px] bg-surface-on rounded-full origin-left"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 }}
+                  transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
                 />
               </motion.span>
               <br />
-              <span className="font-bold">Start</span>{' growing your business.'}
             </>
+          )}
+
+          {/* Phase 3: Type "Start growing your business." */}
+          {phase === 'typing-start' && (
+            <Typewriter
+              text="Start growing your business."
+              speed={50}
+              cursor="|"
+              onComplete={() => setPhase('badges')}
+            />
+          )}
+
+          {/* Phase 4+: Static second line */}
+          {(phase === 'badges' || phase === 'rest') && (
+            <span>
+              <span className="font-bold">Start</span>{' growing your business.'}
+            </span>
           )}
         </h2>
 
-        {/* Keyword badges with black background */}
+        {/* Keyword badges — appear after second line is typed */}
         <div className="flex flex-wrap justify-center gap-3 md:gap-4 min-h-[48px]">
-          {headlineComplete && keywords.map((keyword, index) => (
+          {(phase === 'badges' || phase === 'rest') && keywords.map((keyword, index) => (
             <motion.span
               key={keyword.text}
               variants={badgeVariants}
@@ -154,10 +191,10 @@ export const TransitionSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Lead-in text - more dominant */}
+        {/* Lead-in text */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          animate={badgesComplete ? { opacity: 1, y: 0 } : {}}
+          animate={phase === 'rest' ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
           className="text-2xl md:text-3xl lg:text-4xl font-semibold text-surface-on tracking-tight pt-6"
         >
@@ -169,7 +206,7 @@ export const TransitionSection: React.FC = () => {
           className="flex flex-col items-center pt-6"
           initial={{ opacity: 0 }}
           animate={
-            badgesComplete
+            phase === 'rest'
               ? { opacity: 1, y: [0, 10, 0] }
               : { opacity: 0 }
           }

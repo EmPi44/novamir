@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { TransitionSection } from './components/TransitionSection';
 import { ProductSection } from './components/ProductSection';
+import { CustomSolutionCTA } from './components/CustomSolutionCTA';
 import { JourneySection } from './components/JourneySection';
 import { BookingSection } from './components/BookingSection';
 import { Footer } from './components/Footer';
@@ -26,6 +27,7 @@ function App() {
         <Hero />
         <TransitionSection />
         <ProductSection />
+        <CustomSolutionCTA />
         <JourneySection />
         <BookingSection />
       </main>
