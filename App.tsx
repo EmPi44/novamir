@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-
+import { TransitionSection } from './components/TransitionSection';
 import { ProductSection } from './components/ProductSection';
 import { JourneySection } from './components/JourneySection';
 import { BookingSection } from './components/BookingSection';
@@ -24,6 +24,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <TransitionSection />
         <ProductSection />
         <JourneySection />
         <BookingSection />

@@ -23,7 +23,7 @@ function htmlRewrite(): Plugin {
           return;
         }
 
-        const cleanPages = ['/privacy-policy', '/terms-conditions'];
+        const cleanPages = ['/privacy-policy', '/terms-conditions', '/about', '/contact'];
         if (cleanPages.includes(url)) {
           req.url = url + '.html' + (req.url!.includes('?') ? '?' + req.url!.split('?')[1] : '');
         }

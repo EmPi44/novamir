@@ -4,7 +4,7 @@ import { Logo } from './Logo';
 const navItems = [
   { label: 'Solutions', href: '#product' },
   { label: 'Your Journey With Us', href: '#journey' },
-  { label: 'About', href: '#booking' },
+  { label: "Let's Talk", href: '#booking' },
 ];
 
 export const Header: React.FC = () => {
@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
   return (
     <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'translate-y-0 bg-white/90 backdrop-blur-md shadow-sm' : 'translate-y-0 bg-transparent'}`}>
       <header className="max-w-[1400px] mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" className="flex-shrink-0 z-50 relative text-surface-on">
+        <a href="/" className="flex-shrink-0 z-50 relative text-surface-on" aria-label="Novamir - Home">
           <Logo className="h-6 w-auto" />
         </a>
 

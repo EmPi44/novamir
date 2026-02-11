@@ -12,7 +12,7 @@ const journeyData: TimelineEntry[] = [
           <span className="text-sm font-medium tracking-widest uppercase text-surface-on-variant">Step 1</span>
         </div>
         <p className="text-base text-surface-on-variant leading-relaxed mb-5">
-          We start with a focused conversation to understand your business, your customers, and where AI can create the most impact. No pitch decks — just honest questions and clear answers.
+          We start with a focused conversation to understand your business and your next milestone to see if and how AI can make the impact.
         </p>
         <ul className="space-y-3">
           <li className="flex items-start gap-3 text-sm text-surface-on-variant">
@@ -22,10 +22,6 @@ const journeyData: TimelineEntry[] = [
           <li className="flex items-start gap-3 text-sm text-surface-on-variant">
             <span className="material-symbols-outlined text-base text-surface-on mt-0.5">check_circle</span>
             Identify the highest-leverage automation opportunities
-          </li>
-          <li className="flex items-start gap-3 text-sm text-surface-on-variant">
-            <span className="material-symbols-outlined text-base text-surface-on mt-0.5">check_circle</span>
-            Define measurable success metrics together
           </li>
           <li className="flex items-start gap-3 text-sm text-surface-on-variant">
             <span className="material-symbols-outlined text-base text-surface-on mt-0.5">check_circle</span>
@@ -45,7 +41,7 @@ const journeyData: TimelineEntry[] = [
           <span className="text-sm font-medium tracking-widest uppercase text-surface-on-variant">Step 2</span>
         </div>
         <p className="text-base text-surface-on-variant leading-relaxed mb-5">
-          Our team builds your AI solution in focused sprint cycles, keeping you in the loop at every stage. You see real progress weekly — not just status updates.
+          Our team builds your AI solution in focused sprint cycles, keeping you in the loop at every stage. You see real progress weekly - not just status updates.
         </p>
         <ul className="space-y-3">
           <li className="flex items-start gap-3 text-sm text-surface-on-variant">
@@ -111,7 +107,7 @@ const journeyData: TimelineEntry[] = [
           <span className="text-sm font-medium tracking-widest uppercase text-surface-on-variant">Step 4</span>
         </div>
         <p className="text-base text-surface-on-variant leading-relaxed mb-5">
-          AI gets smarter over time — and so does your setup. We continuously monitor performance, refine models, and scale what works.
+          AI gets smarter over time - and so does your setup. We continuously monitor performance, refine models, and scale what works.
         </p>
         <ul className="space-y-3">
           <li className="flex items-start gap-3 text-sm text-surface-on-variant">
@@ -144,7 +140,7 @@ export const JourneySection: React.FC = () => {
           Your Journey With Us
         </h2>
         <p className="text-lg text-surface-on-variant font-light leading-relaxed max-w-xl">
-          From first conversation to continuous optimization — here's how we bring your AI vision to life, step by step.
+          From first conversation to continuous optimization - here's how we bring your AI vision to life, step by step.
         </p>
       </div>
       <Timeline data={journeyData} />

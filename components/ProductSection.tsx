@@ -1,10 +1,115 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { AnimatedTabs, type Tab } from '@/components/ui/animated-tabs';
+import { FeatureSectionWithHover, type SkillFeature } from '@/components/ui/feature-section-hover';
+import {
+  IconTargetArrow,
+  IconRepeat,
+  IconCalendarEvent,
+  IconMessageQuestion,
+  IconBellRinging,
+  IconAddressBook,
+  IconBolt,
+  IconLanguage,
+  IconUserHeart,
+  IconInfinity,
+  IconTrendingUp,
+  IconChartBar,
+  IconUsers,
+  IconSpeakerphone,
+  IconPackage,
+} from '@tabler/icons-react';
 import giniImg from '../assets/gini.png';
 import henryImg from '../assets/henry.png';
 import mohImg from '../assets/moh.png';
 import gccImg from '../assets/gcc.png';
+
+// Gini Hard Skills
+const giniHardSkills: SkillFeature[] = [
+  {
+    title: "Lead Qualification",
+    description: "Automatically scores and qualifies leads based on engagement and buying signals.",
+    icon: <IconTargetArrow className="w-5 h-5" />,
+  },
+  {
+    title: "Follow-Up",
+    description: "Never lets a lead go cold with intelligent, timely follow-up sequences.",
+    icon: <IconRepeat className="w-5 h-5" />,
+  },
+  {
+    title: "Meeting Scheduling",
+    description: "Books meetings directly on your calendar with timezone-aware availability.",
+    icon: <IconCalendarEvent className="w-5 h-5" />,
+  },
+  {
+    title: "Knowledge Base Q&A",
+    description: "Answers product questions instantly from your docs and FAQs.",
+    icon: <IconMessageQuestion className="w-5 h-5" />,
+  },
+  {
+    title: "Team Notification",
+    description: "Alerts your sales team when high-value leads need human attention.",
+    icon: <IconBellRinging className="w-5 h-5" />,
+  },
+  {
+    title: "Manage CRM",
+    description: "Automatically logs conversations and updates contact records.",
+    icon: <IconAddressBook className="w-5 h-5" />,
+  },
+];
+
+// Gini Soft Skills
+const giniSoftSkills: SkillFeature[] = [
+  {
+    title: "Instant Response",
+    description: "Responds within seconds, 24/7, so leads never wait.",
+    icon: <IconBolt className="w-5 h-5" />,
+  },
+  {
+    title: "Multi-Lingual",
+    description: "Communicates fluently in 50+ languages to reach global audiences.",
+    icon: <IconLanguage className="w-5 h-5" />,
+  },
+  {
+    title: "Personalized Communication",
+    description: "Tailors every message to the prospect's industry, role, and context.",
+    icon: <IconUserHeart className="w-5 h-5" />,
+  },
+  {
+    title: "Persistent Engagement",
+    description: "Follows up consistently without being pushy.",
+    icon: <IconInfinity className="w-5 h-5" />,
+  },
+  {
+    title: "Scales with your needs",
+    description: "Handles 10 or 10,000 conversations without quality degradation.",
+    icon: <IconTrendingUp className="w-5 h-5" />,
+  },
+];
+
+// Command Center Features
+const commandCenterFeatures: SkillFeature[] = [
+  {
+    title: "Track KPIs & Metrics",
+    description: "Real-time dashboards for pipeline health, response times, and conversion rates.",
+    icon: <IconChartBar className="w-5 h-5" />,
+  },
+  {
+    title: "Manage Leads & Customers",
+    description: "A CRM your team actually uses - track every lead from first touch to close.",
+    icon: <IconUsers className="w-5 h-5" />,
+  },
+  {
+    title: "Outbound Campaigns",
+    description: "Launch and manage WhatsApp outbound campaigns with templates and scheduling.",
+    icon: <IconSpeakerphone className="w-5 h-5" />,
+  },
+  {
+    title: "Product Management",
+    description: "Manage your product catalog so Gini can reference it in every conversation.",
+    icon: <IconPackage className="w-5 h-5" />,
+  },
+];
 
 interface Product {
   title: string;
@@ -22,7 +127,7 @@ const products: Product[] = [
   {
     title: "Gini",
     subtitle: "AI Sales Assistant - WhatsApp",
-    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
+    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock - so your team can focus on closing.",
     img: giniImg,
     icon: "smart_toy",
     transparent: true,
@@ -32,30 +137,58 @@ const products: Product[] = [
         id: "gini-outcome",
         label: "Business Outcome",
         content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">trending_up</span>
-              <span className="text-sm font-semibold text-surface-on">3x more qualified leads</span>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg text-surface-on">trending_up</span>
+                <span className="text-sm font-semibold text-surface-on">3x more qualified leads</span>
+              </div>
+              <p className="text-sm text-surface-on-variant leading-relaxed">
+                Companies using Gini see a 3x increase in qualified pipeline within the first 90 days, with 60% reduction in cost per lead.
+              </p>
             </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              Companies using Gini see a 3x increase in qualified pipeline within the first 90 days, with 60% reduction in cost per lead.
-            </p>
+            <div className="flex flex-col gap-1.5">
+              <span className="text-xs font-semibold uppercase tracking-wider text-surface-on-variant/70">Who is it for</span>
+              <p className="text-sm text-surface-on-variant leading-relaxed">
+                Sales teams, startups, and B2B companies looking to scale outreach and lead qualification without scaling headcount.
+              </p>
+            </div>
           </div>
         ),
       },
       {
         id: "gini-feature",
-        label: "Feature",
+        label: "Skills",
         content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">auto_awesome</span>
-              <span className="text-sm font-semibold text-surface-on">Multi-channel sequencing</span>
-            </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              Automated email, LinkedIn, and SMS outreach with AI-crafted personalization. Smart scheduling adapts to each prospect's timezone and engagement patterns.
-            </p>
-          </div>
+          <AnimatedTabs
+            layoutId="gini-skills-subtabs"
+            defaultTab="hard-skills"
+            className="max-w-full"
+            tabs={[
+              {
+                id: "hard-skills",
+                label: "Hard Skills",
+                content: (
+                  <FeatureSectionWithHover
+                    features={giniHardSkills}
+                    accentColor="bg-emerald-500"
+                    hoverGradient="from-emerald-100 dark:from-emerald-900/30"
+                  />
+                ),
+              },
+              {
+                id: "soft-skills",
+                label: "Soft Skills",
+                content: (
+                  <FeatureSectionWithHover
+                    features={giniSoftSkills}
+                    accentColor="bg-emerald-500"
+                    hoverGradient="from-emerald-100 dark:from-emerald-900/30"
+                  />
+                ),
+              },
+            ]}
+          />
         ),
       },
       {
@@ -65,11 +198,27 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">SaaS Series A — 147% pipeline growth</span>
+              <span className="text-sm font-semibold text-surface-on">SaaS Series A - 147% pipeline growth</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
               A B2B SaaS startup deployed Gini to replace manual SDR outreach. Within 60 days they booked 3x more demos while cutting outbound costs by half.
             </p>
+          </div>
+        ),
+      },
+      {
+        id: "gini-demo",
+        label: "Demo",
+        content: (
+          <div className="flex flex-col items-center gap-4 py-6">
+            <p className="text-sm text-surface-on-variant text-center">Curious how Gini works for your business?</p>
+            <a
+              href="#booking"
+              className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
+            >
+              <span className="material-symbols-outlined text-lg">calendar_month</span>
+              Let's Talk — Book a Demo
+            </a>
           </div>
         ),
       },
@@ -88,14 +237,22 @@ const products: Product[] = [
         id: "henry-outcome",
         label: "Business Outcome",
         content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">schedule</span>
-              <span className="text-sm font-semibold text-surface-on">85% faster resolution times</span>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg text-surface-on">schedule</span>
+                <span className="text-sm font-semibold text-surface-on">85% faster resolution times</span>
+              </div>
+              <p className="text-sm text-surface-on-variant leading-relaxed">
+                Henry resolves most inquiries instantly, reducing average handle time from 12 minutes to under 2 - while lifting customer satisfaction scores by 40%.
+              </p>
             </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              Henry resolves most inquiries instantly, reducing average handle time from 12 minutes to under 2 — while lifting customer satisfaction scores by 40%.
-            </p>
+            <div className="flex flex-col gap-1.5">
+              <span className="text-xs font-semibold uppercase tracking-wider text-surface-on-variant/70">Who is it for</span>
+              <p className="text-sm text-surface-on-variant leading-relaxed">
+                Customer support teams and e-commerce brands handling high ticket volumes that need instant, always-on resolution.
+              </p>
+            </div>
           </div>
         ),
       },
@@ -121,7 +278,7 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">E-commerce brand — 70% ticket deflection</span>
+              <span className="text-sm font-semibold text-surface-on">E-commerce brand - 70% ticket deflection</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
               A DTC brand with 50K+ monthly support tickets deployed Henry and deflected 70% of volume within the first month, saving $120K annually in support costs.
@@ -129,11 +286,27 @@ const products: Product[] = [
           </div>
         ),
       },
+      {
+        id: "henry-demo",
+        label: "Demo",
+        content: (
+          <div className="flex flex-col items-center gap-4 py-6">
+            <p className="text-sm text-surface-on-variant text-center">Curious how Henry handles your customer conversations?</p>
+            <a
+              href="#booking"
+              className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
+            >
+              <span className="material-symbols-outlined text-lg">calendar_month</span>
+              Let's Talk — Book a Demo
+            </a>
+          </div>
+        ),
+      },
     ],
   },
   {
     title: "Missions of Honor Platform",
-    subtitle: "Non-Profit Collaboration",
+    subtitle: "Collaboration Platform",
     desc: "A purpose-built collaboration platform connecting veterans, volunteers, and organizations to coordinate missions and create lasting impact together.",
     img: mohImg,
     icon: "diversity_3",
@@ -145,14 +318,22 @@ const products: Product[] = [
         id: "moh-outcome",
         label: "Business Outcome",
         content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">groups</span>
-              <span className="text-sm font-semibold text-surface-on">80% less admin time</span>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg text-surface-on">groups</span>
+                <span className="text-sm font-semibold text-surface-on">80% less admin time</span>
+              </div>
+              <p className="text-sm text-surface-on-variant leading-relaxed">
+                Organizations using the platform cut administrative overhead by up to 80%, freeing teams to spend more time on the missions that matter to veterans.
+              </p>
             </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              Organizations using the platform cut administrative overhead by up to 80%, freeing teams to spend more time on the missions that matter to veterans.
-            </p>
+            <div className="flex flex-col gap-1.5">
+              <span className="text-xs font-semibold uppercase tracking-wider text-surface-on-variant/70">Who is it for</span>
+              <p className="text-sm text-surface-on-variant leading-relaxed">
+                Veteran organizations, nonprofits, and volunteer coordinators who need a single place to plan and manage missions.
+              </p>
+            </div>
           </div>
         ),
       },
@@ -166,7 +347,7 @@ const products: Product[] = [
               <span className="text-sm font-semibold text-surface-on">Mission coordination hub</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
-              Centralized dashboards for mission planning, volunteer matching, resource allocation, and real-time progress tracking — all in one secure workspace.
+              Centralized dashboards for mission planning, volunteer matching, resource allocation, and real-time progress tracking - all in one secure workspace.
             </p>
           </div>
         ),
@@ -178,7 +359,7 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">E-veterans org — first missions launched</span>
+              <span className="text-sm font-semibold text-surface-on">E-veterans org - first missions launched</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
               A veterans organization started managing their first missions, switching from paper notes and friction-filled databases to the new platform.
@@ -186,12 +367,28 @@ const products: Product[] = [
           </div>
         ),
       },
+      {
+        id: "moh-demo",
+        label: "Demo",
+        content: (
+          <div className="flex flex-col items-center gap-4 py-6">
+            <p className="text-sm text-surface-on-variant text-center">Curious how the platform coordinates missions?</p>
+            <a
+              href="#booking"
+              className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
+            >
+              <span className="material-symbols-outlined text-lg">calendar_month</span>
+              Let's Talk — Book a Demo
+            </a>
+          </div>
+        ),
+      },
     ],
   },
   {
-    title: "Gini Command Center",
-    subtitle: "Unified Operations Hub",
-    desc: "Your autonomous AI sales agent that handles outreach, follow-ups, and lead qualification around the clock — so your team can focus on closing.",
+    title: "Gini - Command Center",
+    subtitle: "Customer Relationship Management (CRM)",
+    desc: "A conversational, AI-driven CRM built on WhatsApp. Track KPIs, manage leads, run outbound campaigns, and manage products - all from one place.",
     img: gccImg,
     icon: "hub",
     transparent: true,
@@ -202,30 +399,34 @@ const products: Product[] = [
         id: "gcc-outcome",
         label: "Business Outcome",
         content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">visibility</span>
-              <span className="text-sm font-semibold text-surface-on">Complete operational visibility</span>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <span className="material-symbols-outlined text-lg text-surface-on">visibility</span>
+                <span className="text-sm font-semibold text-surface-on">Full funnel visibility and control</span>
+              </div>
+              <p className="text-sm text-surface-on-variant leading-relaxed">
+                Replace disconnected CRMs and manual tracking with a single dashboard. Monitor lead status, campaign performance, and sales KPIs in real time - so you can optimize what you can actually see.
+              </p>
             </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              Teams running multiple agents report 50% fewer operational blind spots and 30% faster issue resolution through centralized monitoring and alerts.
-            </p>
+            <div className="flex flex-col gap-1.5">
+              <span className="text-xs font-semibold uppercase tracking-wider text-surface-on-variant/70">Who is it for</span>
+              <p className="text-sm text-surface-on-variant leading-relaxed">
+                Sales managers and business owners who need full pipeline visibility and campaign control in one place.
+              </p>
+            </div>
           </div>
         ),
       },
       {
         id: "gcc-feature",
-        label: "Feature",
+        label: "Features",
         content: (
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-lg text-surface-on">dashboard</span>
-              <span className="text-sm font-semibold text-surface-on">Real-time agent dashboards</span>
-            </div>
-            <p className="text-sm text-surface-on-variant leading-relaxed">
-              Live performance metrics, conversation analytics, and workflow status for every deployed agent. Set custom alerts and automate escalation rules from a single pane.
-            </p>
-          </div>
+          <FeatureSectionWithHover
+            features={commandCenterFeatures}
+            accentColor="bg-amber-500"
+            hoverGradient="from-amber-100 dark:from-amber-900/30"
+          />
         ),
       },
       {
@@ -235,11 +436,27 @@ const products: Product[] = [
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2">
               <span className="material-symbols-outlined text-lg text-surface-on">menu_book</span>
-              <span className="text-sm font-semibold text-surface-on">Enterprise — 8 agents, 1 dashboard</span>
+              <span className="text-sm font-semibold text-surface-on">Real estate agency - from chaos to clarity</span>
             </div>
             <p className="text-sm text-surface-on-variant leading-relaxed">
-              A mid-market company managing 8 AI agents across sales, support, and ops consolidated everything into the Command Center — reducing management overhead by 60%.
+              A real estate agency replaced their outdated CRM and manual follow-ups with Gini Command Center. Leads are now tracked, campaigns managed, and agents notified - all through one platform their team actually adopted.
             </p>
+          </div>
+        ),
+      },
+      {
+        id: "gcc-demo",
+        label: "Demo",
+        content: (
+          <div className="flex flex-col items-center gap-4 py-6">
+            <p className="text-sm text-surface-on-variant text-center">Curious how the Command Center runs your sales ops?</p>
+            <a
+              href="#booking"
+              className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
+            >
+              <span className="material-symbols-outlined text-lg">calendar_month</span>
+              Let's Talk — Book a Demo
+            </a>
           </div>
         ),
       },
@@ -300,8 +517,9 @@ function TiltImage({ src, alt, glowColor = "bg-emerald-500/60", maxWidth = "max-
 
 export const ProductSection: React.FC = () => {
   return (
-    <section id="product" className="py-24 max-w-[1400px] mx-auto px-4 sm:px-8 overflow-hidden">
-      {/* Products — alternating image left/right */}
+    <section id="product" className="py-24 max-w-[1400px] mx-auto px-4 sm:px-8 overflow-hidden" aria-labelledby="product-heading">
+      <h2 id="product-heading" className="sr-only">Our Solutions</h2>
+      {/* Products - alternating image left/right */}
       <div className="flex flex-col gap-24 lg:gap-36">
         {products.map((product, idx) => {
           const imageRight = idx % 2 === 0;

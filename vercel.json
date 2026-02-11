@@ -2,8 +2,10 @@
   "rewrites": [
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
     { "source": "/terms-conditions", "destination": "/terms-conditions.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/contact", "destination": "/contact.html" },
     {
-      "source": "/((?!assets|favicon|robots|sitemap|privacy-policy|terms-conditions).*)",
+      "source": "/((?!assets|favicon|robots|sitemap|privacy-policy|terms-conditions|about|contact).*)",
       "destination": "/index.html"
     }
   ],
