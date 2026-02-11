@@ -128,7 +128,9 @@ export const Hero: React.FC = () => {
         </h1>
 
         <p className="text-3xl md:text-5xl lg:text-5xl font-medium tracking-tight text-surface-on leading-[1.2]">
-          We eliminated{' '}
+          We eliminated
+          <br className="md:hidden" />
+          {' '}
           <span className="inline-block bg-black text-white px-3 py-0.5 md:px-5 md:py-1 rounded-xl tabular-nums font-bold shadow-[0_0_40px_8px_rgba(255,255,255,0.08)]">
             {count.toLocaleString()}+ h
           </span>

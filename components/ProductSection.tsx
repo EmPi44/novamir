@@ -367,7 +367,7 @@ const products: Product[] = [
             <div className="flex flex-col gap-1.5">
               {[
                 { icon: "smart_toy", title: "Handles 85%+ of inquiries autonomously", desc: "Henry resolves the vast majority of customer inquiries without human involvement - your team only steps in when it truly matters." },
-                { icon: "schedule", title: "85% faster resolution times", desc: "Average handle time drops from 12 minutes to under 2 - while clearly shifting reviews from 1-2 star ratings to 4-5." },
+                { icon: "schedule", title: "80% faster resolution times", desc: "Average handle time drops from 12 minutes to under 2 - while clearly shifting reviews from 1-2 star ratings to 4-5." },
                 { icon: "savings", title: "Cut support costs significantly", desc: "Deflect the majority of routine tickets automatically - smaller team needed, same quality, lower costs." },
               ].map((item) => (
                 <div
