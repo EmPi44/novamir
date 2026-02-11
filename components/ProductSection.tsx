@@ -518,8 +518,8 @@ const products: Product[] = [
   },
   {
     title: "Missions of Honor Platform",
-    subtitle: "Collaboration Platform",
-    desc: "A purpose-built collaboration platform connecting veterans, volunteers, and organizations to coordinate missions and create lasting impact together.",
+    subtitle: "Operations Management Platform",
+    desc: "A centralized operations platform for organizations that coordinate people, assignments, schedules, and communication — replacing spreadsheet chaos with operational clarity.",
     img: mohImg,
     icon: "diversity_3",
     transparent: true,
@@ -537,15 +537,16 @@ const products: Product[] = [
                 <span className="text-xs font-bold uppercase tracking-wider text-white/90">Who is it for</span>
               </div>
               <p className="text-base font-medium text-white/95 leading-snug">
-                Veteran organizations, nonprofits, and volunteer coordinators who need a single place to plan, coordinate, and manage missions.
+                Organizations that coordinate people, assignments, schedules, and communication - and need operational clarity instead of spreadsheet chaos.
               </p>
             </div>
 
             <div className="flex flex-col gap-1.5">
               {[
-                { icon: "schedule", title: "80% less admin time", desc: "Organizations cut administrative overhead by up to 80%, freeing teams to spend more time on the missions that matter to veterans." },
-                { icon: "groups", title: "Coordinate volunteers effortlessly", desc: "Match the right volunteers to the right missions based on skills, location, and availability - automatically." },
-                { icon: "visibility", title: "Full mission visibility", desc: "Track every mission from planning to completion with real-time dashboards and progress reporting." },
+                { icon: "schedule", title: "Reduce operational workload", desc: "Eliminate repetitive coordination work and manual updates - so teams focus on execution, not administration." },
+                { icon: "visibility", title: "Full operational visibility", desc: "See who is assigned, what is pending, what is blocked, and what is at risk - in one structured system." },
+                { icon: "verified", title: "Fewer errors, fewer surprises", desc: "Structured workflows reduce missed steps, outdated data, and last-minute chaos." },
+                { icon: "trending_up", title: "Increase throughput without increasing headcount", desc: "Handle more cases, projects, or events with the same team - because processes are standardized and automated." },
               ].map((item) => (
                 <div
                   key={item.title}
@@ -567,25 +568,24 @@ const products: Product[] = [
         label: "Pain",
         content: (
           <div className="flex flex-col gap-5">
-            <p className="text-base font-medium text-surface-on leading-snug">
-              Veteran organizations juggle spreadsheets, group chats, and disconnected tools to coordinate missions.
-              <span className="text-red-600 font-semibold"> They lose volunteers and momentum.</span>
-            </p>
-
             <div className="flex flex-col gap-1.5">
               {[
-                { icon: "scatter_plot", text: "Mission details scattered across emails and spreadsheets" },
-                { icon: "person_search", text: "No way to match volunteers to the right missions" },
-                { icon: "visibility_off", text: "Zero visibility into mission progress" },
-                { icon: "sync_problem", text: "Manual coordination that doesn't scale" },
-                { icon: "group_off", text: "Volunteer drop-off from disorganization" },
+                { icon: "folder_off", title: "Data is fragmented", desc: "Information lives across spreadsheets, emails, notes, and messaging tools - no single source of truth." },
+                { icon: "sync_problem", title: "Manual updates constantly break", desc: "Status changes are forgotten. Lists are outdated the moment they're created." },
+                { icon: "swap_horiz", title: "Assignments are unclear and time-consuming", desc: "Matching people to roles, schedules, or tasks happens ad hoc and is hard to track or justify later." },
+                { icon: "chat_bubble", title: "Communication is unstructured", desc: "Conversations happen across channels without history, templates, or consistency." },
+                { icon: "warning", title: "Last-minute changes create operational stress", desc: "Availability shifts, cancellations, or updates create cascading issues across the system." },
+                { icon: "bar_chart", title: "No real-time reporting", desc: "Leaders lack clear dashboards for bottlenecks, workload, completion rates, and performance metrics." },
               ].map((item) => (
                 <div
-                  key={item.text}
-                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-red-500 bg-red-50/60"
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-lg px-3 py-2.5 border-l-2 border-red-500 bg-red-50/60"
                 >
-                  <span className="material-symbols-outlined text-xl text-red-600 shrink-0">{item.icon}</span>
-                  <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                  <span className="material-symbols-outlined text-xl text-red-600 shrink-0 mt-px">{item.icon}</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-sm font-semibold text-surface-on">{item.title}</span>
+                    <span className="text-sm text-surface-on-variant leading-relaxed">{item.desc}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -593,14 +593,15 @@ const products: Product[] = [
             <div className="rounded-xl bg-red-600 px-4 py-4">
               <div className="flex items-center gap-2 mb-3">
                 <span className="material-symbols-outlined text-lg text-white">trending_down</span>
-                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Business Impact</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/90">Operational impact</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
                 {[
-                  "Missed missions and deadlines",
-                  "Volunteer burnout and drop-off",
-                  "Wasted resources and donations",
-                  "Poor accountability and reporting",
+                  "Team overload and burnout",
+                  "Repeated coordination mistakes",
+                  "Slower execution cycles",
+                  "Low transparency for leadership",
+                  "Scaling requires hiring instead of improving systems",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-white/70 shrink-0" />
@@ -617,23 +618,24 @@ const products: Product[] = [
         label: "Solution",
         content: (
           <div className="flex flex-col gap-5">
-            <p className="text-base font-medium text-surface-on leading-snug">
-              In response we built a purpose-built collaboration platform that centralizes mission coordination, volunteer management, and impact tracking in one secure workspace.
-            </p>
-
             <div className="flex flex-col gap-1.5">
               {[
-                { icon: "diversity_3", text: "Purpose-built for veteran organizations and nonprofits" },
-                { icon: "hub", text: "Centralized mission planning, coordination, and tracking" },
-                { icon: "group_add", text: "Smart volunteer matching based on skills and availability" },
-                { icon: "monitoring", text: "Real-time dashboards and impact reporting" },
+                { icon: "hub", title: "One centralized operations hub", desc: "All people, assignments, schedules, tasks, and communication in one structured platform." },
+                { icon: "rule", title: "Structured workflows and status logic", desc: "Clear lifecycle stages and transitions - so every case, project, or assignment follows defined steps." },
+                { icon: "checklist", title: "Task and process tracking", desc: "Standardized checklists ensure nothing is forgotten and accountability is visible." },
+                { icon: "sms", title: "Integrated communication layer", desc: "Centralized messaging with templates, history, and automation - tied directly to operational records." },
+                { icon: "bar_chart", title: "Real-time dashboards and reporting", desc: "Track workload, bottlenecks, completion rates, and resource allocation instantly." },
+                { icon: "lock", title: "Roles, permissions, and audit trail", desc: "Control access by role and maintain full transparency over changes and actions." },
               ].map((item) => (
                 <div
-                  key={item.text}
-                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 border-l-2 border-amber-500 bg-amber-50/60"
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-lg px-3 py-2.5 border-l-2 border-amber-500 bg-amber-50/60"
                 >
-                  <span className="material-symbols-outlined text-xl text-amber-600 shrink-0">{item.icon}</span>
-                  <span className="text-sm font-semibold text-surface-on">{item.text}</span>
+                  <span className="material-symbols-outlined text-xl text-amber-600 shrink-0 mt-px">{item.icon}</span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-sm font-semibold text-surface-on">{item.title}</span>
+                    <span className="text-sm text-surface-on-variant leading-relaxed">{item.desc}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -645,7 +647,7 @@ const products: Product[] = [
         label: "Demo",
         content: (
           <div className="flex flex-col items-center gap-4 py-6">
-            <p className="text-sm text-surface-on-variant text-center">Curious how the platform coordinates missions?</p>
+            <p className="text-sm text-surface-on-variant text-center">Curious how the platform streamlines your operations?</p>
             <a
               href="#booking"
               className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"

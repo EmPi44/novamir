@@ -53,7 +53,7 @@ export const TransitionSection: React.FC = () => {
       <section className="py-20 md:py-32 bg-surface">
         <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-10">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-surface-on leading-tight tracking-tight">
-            Stop doing admin, start growing your business.
+            Stop doing admin,<br />Start growing your business.
           </h2>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {keywords.map((keyword) => (
@@ -101,10 +101,10 @@ export const TransitionSection: React.FC = () => {
         className="max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-10"
       >
         {/* Main headline with typewriter effect */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-surface-on leading-tight tracking-tight min-h-[2.4em]">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-surface-on leading-tight tracking-tight min-h-[2.4em] whitespace-pre-line">
           {isInView && (
             <Typewriter
-              text="Stop doing admin, start growing your business."
+              text={"Stop doing admin,\nStart growing your business."}
               speed={35}
               cursor="|"
               onComplete={() => setHeadlineComplete(true)}
