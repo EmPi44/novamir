@@ -53,7 +53,7 @@ export const TransitionSection: React.FC = () => {
       <section className="py-20 md:py-32 bg-surface">
         <div className="max-w-4xl mx-auto px-4 sm:px-8 text-center space-y-10">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-surface-on leading-tight tracking-tight">
-            Get your energy & time back to focus on your business.
+            Stop doing admin, start growing your business.
           </h2>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4">
             {keywords.map((keyword) => (
@@ -84,7 +84,7 @@ export const TransitionSection: React.FC = () => {
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-surface-on leading-tight tracking-tight min-h-[2.4em]">
           {isInView && (
             <Typewriter
-              text="Get your energy & time back to focus on your business."
+              text="Stop doing admin, start growing your business."
               speed={35}
               cursor="|"
               onComplete={() => setHeadlineComplete(true)}
