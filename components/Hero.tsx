@@ -134,7 +134,9 @@ export const Hero: React.FC = () => {
           <span className="inline-block bg-black text-white px-3 py-0.5 md:px-5 md:py-1 rounded-xl tabular-nums font-bold shadow-[0_0_40px_8px_rgba(255,255,255,0.08)]">
             {count.toLocaleString()}+ h
           </span>
-          {' '}of manual work
+          <br className="md:hidden" />
+          <span className="hidden md:inline">{' '}</span>
+          of manual work
           <br />
           <span className="text-surface-on-variant">with scalable AI systems.</span>
           <span className="block text-xl md:text-2xl mt-6 font-normal text-surface-on-variant">
@@ -152,7 +154,7 @@ export const Hero: React.FC = () => {
 
       {/* Client logo marquee at bottom of hero */}
       <div className="absolute bottom-8 left-0 right-0 z-10">
-        <p className="flex items-center justify-center gap-3 text-xs font-medium tracking-widest uppercase text-surface-on-variant mb-4">
+        <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs font-medium tracking-widest uppercase text-surface-on-variant mb-4 px-4 text-center">
           <span>Trusted by</span>
           <span className="w-px h-3.5 bg-current opacity-30"></span>
           <span>In collaboration with Genie AI Solutions</span>
