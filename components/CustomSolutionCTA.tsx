@@ -27,11 +27,11 @@ export const CustomSolutionCTA: React.FC = () => {
             Every business runs differently.
           </h2>
           <p className="text-lg md:text-xl text-surface-on-variant font-light leading-relaxed max-w-2xl mx-auto">
-            Tell us where you want to be in 3 months - we'll build the system that gets you there.
+            Tell us where you want to be in 3 months - we'll build the system that gets you there. Faster & with more peace of mind.
           </p>
           <a
             href="#booking"
-            className="inline-flex items-center gap-2 bg-surface-on text-surface px-8 py-3 rounded-full text-sm font-semibold"
+            className="inline-flex items-center gap-2 bg-surface-on text-surface px-6 py-3 rounded-full text-sm font-semibold"
           >
             Let's Design Yours
           </a>
@@ -70,13 +70,13 @@ export const CustomSolutionCTA: React.FC = () => {
           animate={headlineComplete ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          Tell us where you want to be in 3 months - we'll build the system that gets you there.
+          Tell us where you want to be in 3 months - we'll build the system that gets you there. Faster & with more peace of mind.
         </motion.p>
 
         {/* CTA button */}
         <motion.a
           href="#booking"
-          className="inline-flex items-center gap-2 bg-surface-on text-surface px-8 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
+          className="inline-flex items-center gap-2 bg-surface-on text-surface px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 active:scale-95 transition-transform duration-200"
           initial={{ opacity: 0, y: 20 }}
           animate={headlineComplete ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
