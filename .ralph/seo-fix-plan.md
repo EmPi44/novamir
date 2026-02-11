@@ -32,6 +32,6 @@
 
 ### Phase 4: Verification & Cleanup
 
-- [ ] T16: Run `npm run build` to verify no build errors after all changes.
-- [ ] T17: Run `squirrel audit https://novamir.com --format llm` and record the new score. If the site hasn't been deployed yet, note this for post-deploy verification.
+- [x] T16: Build verified — `npm run build` succeeds with no errors. Only informational chunk size warning (not a build error).
+- [x] T17: Local audit complete — **83/100 (Grade B)** up from 46/100 (Grade F). Remaining issues are localhost-specific (HTTPS, compression, HTTP2, sitemap domain mismatch) that Vercel handles in production. 12 categories score 100/100. Re-audit live site after deploy to confirm final production score.
 - [ ] T18: Git commit all remaining uncommitted changes with a summary message.
