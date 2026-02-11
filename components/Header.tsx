@@ -19,8 +19,25 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) setIsMenuOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'translate-y-0 bg-white/90 backdrop-blur-md shadow-sm' : 'translate-y-0 bg-transparent'}`}>
+    <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
       <header className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         <a href="/" className="flex-shrink-0 z-50 relative text-surface-on" aria-label="Novamir - Home">
           <Logo className="h-6 w-auto" />
@@ -47,7 +64,8 @@ export const Header: React.FC = () => {
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="lg:hidden z-50 relative p-2 rounded-full hover:bg-gray-100 transition-colors"
-          aria-label="Toggle Menu"
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMenuOpen}
         >
           <span className="material-symbols-outlined text-3xl">
             {isMenuOpen ? 'close' : 'dehaze'}
@@ -55,7 +73,7 @@ export const Header: React.FC = () => {
         </button>
 
         {/* Mobile Nav Overlay */}
-        <div className={`fixed inset-0 bg-white z-40 transition-opacity duration-300 flex flex-col pt-24 px-6 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`fixed inset-0 bg-white z-[45] transition-all duration-300 ease-out flex flex-col pt-24 px-6 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
           <nav>
             <ul className="flex flex-col">
               {navItems.map((item) => (
