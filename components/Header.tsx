@@ -37,20 +37,17 @@ export const Header: React.FC = () => {
   }, []);
 
   return (
-    <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
-      <header className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-        <a href="/" className="flex-shrink-0 z-50 relative text-surface-on" aria-label="Novamir - Home">
-          <Logo className="h-6 w-auto" />
-        </a>
-
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-1">
-          <ul className="flex flex-row gap-1">
+    <>
+      {/* Mobile Nav Overlay — must be outside the header's backdrop-blur container */}
+      <div className={`fixed inset-0 bg-white z-[45] transition-all duration-300 ease-out flex flex-col pt-24 px-6 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <nav>
+          <ul className="flex flex-col">
             {navItems.map((item) => (
-              <li key={item.label}>
-                <a 
+              <li key={item.label} className="border-b border-gray-100 last:border-none">
+                <a
                   href={item.href}
-                  className="px-4 py-2 rounded-full text-sm font-medium text-surface-on-variant hover:text-surface-on hover:bg-surface-container-high transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block py-6 text-2xl font-light text-surface-on hover:text-black transition-colors"
                 >
                   {item.label}
                 </a>
@@ -58,30 +55,22 @@ export const Header: React.FC = () => {
             ))}
           </ul>
         </nav>
+      </div>
 
+      <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
+        <header className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+          <a href="/" className="flex-shrink-0 relative text-surface-on" aria-label="Novamir - Home">
+            <Logo className="h-6 w-auto" />
+          </a>
 
-        {/* Mobile Toggle */}
-        <button 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden z-50 relative p-2 rounded-full hover:bg-gray-100 transition-colors"
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={isMenuOpen}
-        >
-          <span className="material-symbols-outlined text-3xl">
-            {isMenuOpen ? 'close' : 'dehaze'}
-          </span>
-        </button>
-
-        {/* Mobile Nav Overlay */}
-        <div className={`fixed inset-0 bg-white z-[45] transition-all duration-300 ease-out flex flex-col pt-24 px-6 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-          <nav>
-            <ul className="flex flex-col">
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-1">
+            <ul className="flex flex-row gap-1">
               {navItems.map((item) => (
-                <li key={item.label} className="border-b border-gray-100 last:border-none">
-                  <a 
+                <li key={item.label}>
+                  <a
                     href={item.href}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block py-6 text-2xl font-light text-surface-on hover:text-black transition-colors"
+                    className="px-4 py-2 rounded-full text-sm font-medium text-surface-on-variant hover:text-surface-on hover:bg-surface-container-high transition-colors"
                   >
                     {item.label}
                   </a>
@@ -89,8 +78,20 @@ export const Header: React.FC = () => {
               ))}
             </ul>
           </nav>
-        </div>
-      </header>
-    </div>
+
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden relative p-2 rounded-full hover:bg-gray-100 transition-colors"
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
+          >
+            <span className="material-symbols-outlined text-3xl">
+              {isMenuOpen ? 'close' : 'dehaze'}
+            </span>
+          </button>
+        </header>
+      </div>
+    </>
   );
 };
